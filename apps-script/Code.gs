@@ -1,4 +1,26 @@
 /**
+ * 對外（公開）的資料檢視：拿掉聯絡方式與備註。
+ *
+ * 為什麼要這樣做：網站是公開的，Apps Script 的網址會出現在網頁原始碼裡，
+ * 任何人拿到就可以呼叫 list。所以「聯絡資訊」絕對不能從這支 API 流出去 —
+ * 完整資料只有主辦在自己的 Google Sheet（私有）裡看得到。
+ */
+function publicView_(list) {
+  return (list || []).map(function (n) {
+    var copy = {
+      id: n.id, cat: n.cat,
+      title: n.title, desc: n.desc, skills: n.skills,
+      date: n.date, time: n.time, place: n.place,
+      slots: n.slots, contact: n.contact,
+      claimants: (n.claimants || []).map(function (c) {
+        return { name: c.name, avail: c.avail || '', at: c.at || '' };
+      })
+    };
+    return copy;
+  });
+}
+
+/**
  * ============================================================================
  *  Music Showcase · 志工認領 — Google Sheet 後端
  *  Music Showcase Volunteer Board — Google Sheets backend
@@ -8,7 +30,7 @@
  *  部署步驟請看同資料夾的 README.md「雲端同步」段落。
  *
  *  API 契約（前端 index.html 會呼叫這些）：
- *    GET  ?action=list                        → { ok:true, needs:[...] }
+ *    GET  ?action=list                        → { ok:true, needs:[...] }（不含聯絡資訊）
  *    POST { action:'claim',      id, person } → { ok:true, need, needs }
  *    POST { action:'unclaim',    id, index  } → { ok:true, need, needs }
  *    POST { action:'add',        need       } → { ok:true, need, needs }
@@ -128,13 +150,16 @@ function doGet(e) {
   try {
     var action = (e && e.parameter && e.parameter.action) || 'list';
     if (action === 'list' || action === 'ping') {
-      return json_({ ok: true, needs: readAll_() });
+      return json_({ ok: true, needs: PUB_() });
     }
     return json_({ ok: false, error: 'unknown action: ' + action });
   } catch (err) {
     return json_({ ok: false, error: String(err) });
   }
 }
+
+/** 讀取整表並轉成可公開的檢視（不含聯絡資訊） */
+function PUB_() { return publicView_(readAll_()); }
 
 /* ----------------------------------------------------------------- doPost */
 
@@ -192,7 +217,7 @@ function handleClaim_(sh, body) {
   });
 
   sh.getRange(row, COL.claimants).setValue(JSON.stringify(n.claimants));
-  return { ok: true, need: n, needs: readAll_() };
+  return { ok: true, need: publicView_([n])[0], needs: PUB_() };
 }
 
 function handleUnclaim_(sh, body) {
@@ -212,7 +237,7 @@ function handleUnclaim_(sh, body) {
 
   n.claimants.splice(idx, 1);
   sh.getRange(row, COL.claimants).setValue(JSON.stringify(n.claimants));
-  return { ok: true, need: n, needs: readAll_() };
+  return { ok: true, need: publicView_([n])[0], needs: PUB_() };
 }
 
 function handleAdd_(sh, body) {
@@ -220,12 +245,38 @@ function handleAdd_(sh, body) {
   if (!n.id) n.id = 'n' + new Date().getTime().toString(36);
   if (findRow_(sh, n.id) !== -1) return { ok: false, error: 'id already exists' };
   sh.appendRow(needToRow_(n));
-  return { ok: true, need: n, needs: readAll_() };
+  return { ok: true, need: publicView_([n])[0], needs: PUB_() };
 }
 
 function handleReplaceAll_(sh, body) {
   var list = body.needs;
   if (!Array.isArray(list)) return { ok: false, error: 'needs must be an array' };
+
+  // 保留雲端既有的聯絡資訊。
+  // 前端看到的認領人只有姓名（聯絡方式不對外），所以若直接覆蓋會把聯絡資料洗掉。
+  // 這裡用「同一項任務 + 同一個姓名」把 contact / note 接回來。
+  var existing = {};
+  readAll_().forEach(function (n) { existing[n.id] = n; });
+
+  list.forEach(function (n) {
+    var prev = existing[n.id];
+    if (!prev) return;
+    var byName = {};
+    (prev.claimants || []).forEach(function (c) {
+      byName[String(c.name).toLowerCase()] = c;
+    });
+    n.claimants = (n.claimants || []).map(function (c) {
+      var old = byName[String(c.name).toLowerCase()];
+      if (!old) return c;
+      return {
+        name:    c.name,
+        contact: c.contact || old.contact || '',
+        avail:   c.avail   || old.avail   || '',
+        note:    c.note    || old.note    || '',
+        at:      c.at      || old.at      || ''
+      };
+    });
+  });
 
   var last = sh.getLastRow();
   if (last > 1) sh.getRange(2, 1, last - 1, HEADERS.length).clearContent();
@@ -234,12 +285,12 @@ function handleReplaceAll_(sh, body) {
     var rows = list.map(needToRow_);
     sh.getRange(2, 1, rows.length, HEADERS.length).setValues(rows);
   }
-  return { ok: true, needs: readAll_() };
+  return { ok: true, needs: PUB_() };
 }
 
 function handleInit_(sh, body) {
   var existing = readAll_();
-  if (existing.length) return { ok: true, needs: existing, skipped: true };
+  if (existing.length) return { ok: true, needs: publicView_(existing), skipped: true };
   return handleReplaceAll_(sh, body);
 }
 

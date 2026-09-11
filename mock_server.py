@@ -65,6 +65,23 @@ def find(db, nid):
     return None
 
 
+def public_view(lst):
+    """對外檢視：拿掉認領人的 contact / note（與 Apps Script 的 publicView_ 一致）"""
+    out = []
+    for n in lst or []:
+        c = dict(n)
+        c["claimants"] = [
+            {"name": x.get("name", ""), "avail": x.get("avail", ""), "at": x.get("at", "")}
+            for x in (n.get("claimants") or [])
+        ]
+        out.append(c)
+    return out
+
+
+def PUB():
+    return public_view(DB)
+
+
 # ------------------------------------------------------------------- actions
 
 def act_claim(body):
@@ -90,7 +107,7 @@ def act_claim(body):
         "at": time.strftime("%Y-%m-%dT%H:%M:%S.000Z", time.gmtime()),
     })
     save_db(DB)
-    return {"ok": True, "need": n, "needs": DB}
+    return {"ok": True, "need": public_view([n])[0], "needs": PUB()}
 
 
 def act_unclaim(body):
@@ -114,7 +131,7 @@ def act_unclaim(body):
 
     claimants.pop(idx)
     save_db(DB)
-    return {"ok": True, "need": n, "needs": DB}
+    return {"ok": True, "need": public_view([n])[0], "needs": PUB()}
 
 
 def act_add(body):
@@ -126,7 +143,7 @@ def act_add(body):
     n.setdefault("claimants", [])
     DB.insert(0, n)
     save_db(DB)
-    return {"ok": True, "need": n, "needs": DB}
+    return {"ok": True, "need": public_view([n])[0], "needs": PUB()}
 
 
 def act_replace_all(body):
@@ -134,14 +151,37 @@ def act_replace_all(body):
     lst = body.get("needs")
     if not isinstance(lst, list):
         return {"ok": False, "error": "needs must be an array"}
+
+    # 保留雲端既有的 contact / note（前端公開資料沒有這些欄位）
+    existing = {str(n.get("id")): n for n in DB}
+    for n in lst:
+        prev = existing.get(str(n.get("id")))
+        if not prev:
+            continue
+        by_name = {str(c.get("name", "")).lower(): c for c in (prev.get("claimants") or [])}
+        merged = []
+        for c in (n.get("claimants") or []):
+            old = by_name.get(str(c.get("name", "")).lower())
+            if not old:
+                merged.append(c)
+                continue
+            merged.append({
+                "name": c.get("name", ""),
+                "contact": c.get("contact") or old.get("contact", ""),
+                "avail": c.get("avail") or old.get("avail", ""),
+                "note": c.get("note") or old.get("note", ""),
+                "at": c.get("at") or old.get("at", ""),
+            })
+        n["claimants"] = merged
+
     DB = lst
     save_db(DB)
-    return {"ok": True, "needs": DB}
+    return {"ok": True, "needs": PUB()}
 
 
 def act_init(body):
     if DB:
-        return {"ok": True, "needs": DB, "skipped": True}
+        return {"ok": True, "needs": PUB(), "skipped": True}
     return act_replace_all(body)
 
 
@@ -182,7 +222,7 @@ class Handler(BaseHTTPRequestHandler):
             action = (qs.get("action") or ["list"])[0]
             with LOCK:
                 if action in ("list", "ping"):
-                    return self._json({"ok": True, "needs": DB})
+                    return self._json({"ok": True, "needs": PUB()})
             return self._json({"ok": False, "error": "unknown action: " + action})
 
         if path in ("/", "/index.html"):
