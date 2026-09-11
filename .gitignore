@@ -1,0 +1,4 @@
+node_modules/
+mock_db.json
+.DS_Store
+shots/*.png

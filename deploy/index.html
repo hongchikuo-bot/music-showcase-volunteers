@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Music Showcase · 志工認領 Volunteer Sign-up</title>
+<meta name="description" content="Music Showcase 年度音樂會志工需求認領平台 Volunteer sign-up board for the annual Music Showcase concert.">
+<style>
+:root{
+  --wine:#7a2233;
+  --wine-dark:#5c1626;
+  --gold:#c9a24a;
+  --gold-light:#e6cf94;
+  --ink:#2b2320;
+  --ink-soft:#6b5f58;
+  --paper:#fdfaf5;
+  --paper-2:#f6efe3;
+  --line:#e3d8c8;
+  --ok:#2f7a52;
+  --ok-bg:#e6f3ec;
+  --full:#8a6d3b;
+  --full-bg:#f6efdf;
+  --shadow:0 2px 6px rgba(60,40,20,.06),0 12px 28px rgba(60,40,20,.07);
+  --radius:14px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC","Noto Sans TC","Microsoft JhengHei","Helvetica Neue",Arial,sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--wine)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+
+/* ---------- header ---------- */
+.en-block{display:block;font-size:.88em;font-weight:400;opacity:.72;margin-top:3px;line-height:1.5}
+.note .en-block,footer .en-block{opacity:.8}
+header{
+  background:linear-gradient(160deg,var(--wine) 0%,var(--wine-dark) 100%);
+  color:#fff;
+  padding:18px 0 22px;
+  position:relative;
+  overflow:hidden;
+}
+header::after{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at 82% 15%,rgba(201,162,74,.28),transparent 55%);
+  pointer-events:none;
+}
+.head-row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;position:relative;z-index:1}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
+.logo{
+  width:44px;height:44px;flex:0 0 44px;border-radius:12px;
+  background:var(--gold);color:var(--wine-dark);
+  display:grid;place-items:center;font-size:24px;font-weight:700;
+  box-shadow:0 4px 14px rgba(0,0,0,.2);
+}
+.brand-txt{min-width:0}
+.brand-txt h1{margin:0;font-size:19px;letter-spacing:.5px;font-weight:700;white-space:nowrap}
+.brand-txt p{margin:1px 0 0;font-size:12.5px;opacity:.82;letter-spacing:.3px}
+
+.lang-switch{display:flex;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:3px;gap:2px}
+.head-tools{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.sync{
+  font-size:12px;font-weight:600;border-radius:999px;padding:5px 12px;
+  border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.12);
+  color:#fff;white-space:nowrap;display:none;align-items:center;gap:6px;
+}
+.sync.show{display:inline-flex}
+.sync .dot{width:7px;height:7px;border-radius:50%;background:#ccc;flex:0 0 7px}
+.sync.local .dot{background:var(--gold-light)}
+.sync.loading .dot{background:#9fd0ff;animation:pulse 1s infinite}
+.sync.online .dot{background:#5ddc9a}
+.sync.error .dot{background:#ff8f8f}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+.btn.busy{opacity:.55;pointer-events:none}
+.lang-switch button{
+  border:0;background:transparent;color:#fff;opacity:.75;
+  padding:6px 13px;border-radius:999px;cursor:pointer;font-size:13px;font-weight:600;
+  font-family:inherit;transition:.15s;white-space:nowrap;
+}
+.lang-switch button:hover{opacity:1}
+.lang-switch button.on{background:#fff;color:var(--wine);opacity:1}
+
+/* ---------- hero ---------- */
+.hero{
+  background:var(--paper-2);
+  border-bottom:1px solid var(--line);
+  padding:24px 0;
+}
+.hero-inner{display:flex;justify-content:space-between;gap:24px;align-items:flex-start;flex-wrap:wrap}
+.hero h2{margin:0 0 6px;font-size:22px;color:var(--wine-dark);font-weight:700}
+.hero p{margin:0;color:var(--ink-soft);font-size:14.5px;max-width:640px}
+.hero-meta{margin-top:12px;display:flex;gap:10px;flex-wrap:wrap}
+.pill{
+  display:inline-flex;align-items:center;gap:7px;
+  background:#fff;border:1px solid var(--line);border-radius:999px;
+  padding:6px 14px;font-size:13px;color:var(--ink-soft);white-space:nowrap;
+}
+.pill b{color:var(--ink);font-weight:600}
+
+.stats{display:flex;gap:10px;flex-wrap:wrap}
+.stat{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:12px 18px;min-width:104px;text-align:center;box-shadow:var(--shadow);
+}
+.stat .n{font-size:24px;font-weight:700;color:var(--wine);line-height:1.2}
+.stat .l{font-size:11.5px;color:var(--ink-soft);letter-spacing:.4px;margin-top:2px}
+
+/* ---------- controls ---------- */
+.controls{padding:22px 0 6px}
+.search-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.search-box{
+  flex:1 1 260px;display:flex;align-items:center;gap:9px;
+  background:#fff;border:1px solid var(--line);border-radius:999px;
+  padding:10px 18px;box-shadow:var(--shadow);
+}
+.search-box input{
+  border:0;outline:0;font-size:15px;width:100%;background:transparent;
+  font-family:inherit;color:var(--ink);
+}
+.search-box span{color:var(--ink-soft);font-size:15px}
+.btn{
+  border:0;border-radius:999px;padding:11px 20px;font-size:14px;font-weight:600;
+  cursor:pointer;font-family:inherit;transition:.15s;white-space:nowrap;
+  display:inline-flex;align-items:center;gap:7px;
+}
+.btn-primary{background:var(--wine);color:#fff}
+.btn-primary:hover{background:var(--wine-dark)}
+.btn-ghost{background:#fff;color:var(--ink-soft);border:1px solid var(--line)}
+.btn-ghost:hover{border-color:var(--wine);color:var(--wine)}
+.btn-ghost.on{background:var(--wine);color:#fff;border-color:var(--wine)}
+.btn-gold{background:var(--gold);color:var(--wine-dark)}
+.btn-gold:hover{background:var(--gold-light)}
+.btn-sm{padding:8px 15px;font-size:13px}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+
+.chips{display:flex;gap:8px;flex-wrap:wrap;padding-bottom:6px}
+.chip{
+  border:1px solid var(--line);background:#fff;color:var(--ink-soft);
+  border-radius:999px;padding:7px 15px;font-size:13.5px;cursor:pointer;
+  font-family:inherit;transition:.15s;font-weight:500;
+}
+.chip:hover{border-color:var(--wine);color:var(--wine)}
+.chip.on{background:var(--wine);color:#fff;border-color:var(--wine);font-weight:600}
+
+/* ---------- grid ---------- */
+.grid{
+  display:grid;gap:18px;padding:20px 0 40px;
+  grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+}
+.card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px;box-shadow:var(--shadow);display:flex;flex-direction:column;
+  position:relative;transition:.18s;border-top:3px solid var(--gold);
+}
+.card:hover{transform:translateY(-2px);box-shadow:0 4px 10px rgba(60,40,20,.08),0 18px 36px rgba(60,40,20,.1)}
+.card.is-full{border-top-color:var(--ok)}
+.card.is-closed{opacity:.72;border-top-color:#bbb}
+
+.card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:10px}
+.badge{
+  font-size:11.5px;font-weight:700;letter-spacing:.4px;
+  background:var(--paper-2);color:var(--wine);border-radius:999px;padding:4px 11px;
+  white-space:nowrap;
+}
+.status{
+  font-size:11.5px;font-weight:700;border-radius:999px;padding:4px 11px;white-space:nowrap;
+}
+.status.open{background:#fdf1e3;color:#a8631f}
+.status.full{background:var(--ok-bg);color:var(--ok)}
+.status.closed{background:#eee;color:#777}
+
+.card h3{margin:0 0 4px;font-size:16.5px;line-height:1.4;color:var(--ink);font-weight:700}
+.card h3 .en{display:block;font-size:13.5px;font-weight:500;color:var(--ink-soft);margin-top:2px}
+.card .desc{margin:8px 0 0;font-size:13.8px;color:var(--ink-soft)}
+.card .desc .en{display:block;margin-top:4px;font-size:13px;opacity:.85}
+
+.meta{margin:14px 0 0;display:flex;flex-direction:column;gap:7px;font-size:13.2px;color:var(--ink-soft)}
+.meta div{display:flex;gap:8px;align-items:flex-start}
+.meta .k{flex:0 0 18px;text-align:center;opacity:.75}
+.meta .v b{color:var(--ink);font-weight:600}
+
+.progress-wrap{margin:16px 0 0}
+.progress-top{display:flex;justify-content:space-between;font-size:12.5px;color:var(--ink-soft);margin-bottom:5px}
+.progress{height:7px;background:var(--paper-2);border-radius:99px;overflow:hidden}
+.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--wine));border-radius:99px;transition:width .3s}
+
+.claimants{margin:14px 0 0;border-top:1px dashed var(--line);padding-top:12px}
+.claimants h4{margin:0 0 7px;font-size:12.5px;color:var(--ink-soft);font-weight:600;letter-spacing:.3px}
+.claimant{
+  display:flex;justify-content:space-between;align-items:center;gap:10px;
+  font-size:13px;padding:5px 0;
+}
+.claimant .who{color:var(--ink);font-weight:600}
+.claimant .when{color:var(--ink-soft);font-size:11.5px}
+.claimant .undo{
+  border:0;background:transparent;color:#b04a4a;font-size:12px;cursor:pointer;
+  font-family:inherit;text-decoration:underline;padding:2px 4px;
+}
+
+.card-actions{margin-top:auto;padding-top:16px;display:flex;gap:9px}
+.card-actions .btn{flex:1;justify-content:center}
+
+.empty{
+  grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--ink-soft);
+  background:#fff;border:1px dashed var(--line);border-radius:var(--radius);
+}
+.empty .big{font-size:38px;display:block;margin-bottom:10px}
+
+/* ---------- modal ---------- */
+.overlay{
+  position:fixed;inset:0;background:rgba(43,35,32,.55);
+  display:none;align-items:center;justify-content:center;padding:20px;z-index:100;
+  backdrop-filter:blur(2px);
+}
+.overlay.show{display:flex}
+.modal{
+  background:#fff;border-radius:18px;width:100%;max-width:540px;
+  max-height:92vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.3);
+  animation:pop .18s ease-out;
+}
+@keyframes pop{from{transform:translateY(12px) scale(.98);opacity:0}to{transform:none;opacity:1}}
+.modal-head{
+  background:linear-gradient(160deg,var(--wine),var(--wine-dark));color:#fff;
+  padding:20px 24px;border-radius:18px 18px 0 0;
+}
+.modal-head h3{margin:0;font-size:18px}
+.modal-head p{margin:5px 0 0;font-size:13px;opacity:.85}
+.modal-body{padding:22px 24px}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:13.5px;font-weight:600;margin-bottom:6px;color:var(--ink)}
+.field label .opt{font-weight:400;color:var(--ink-soft);font-size:12px}
+.field input,.field textarea,.field select{
+  width:100%;border:1px solid var(--line);border-radius:10px;
+  padding:11px 13px;font-size:14.5px;font-family:inherit;color:var(--ink);
+  background:var(--paper);outline:0;transition:.15s;
+}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--wine);background:#fff}
+.field textarea{min-height:76px;resize:vertical}
+.field .hint{font-size:12px;color:var(--ink-soft);margin-top:5px}
+.field .err{font-size:12.5px;color:#b04a4a;margin-top:5px;display:none}
+.field.bad input,.field.bad textarea{border-color:#d88;background:#fdf5f5}
+.field.bad .err{display:block}
+.modal-foot{display:flex;gap:10px;padding:0 24px 24px}
+.modal-foot .btn{flex:1;justify-content:center}
+
+/* ---------- admin ---------- */
+.admin{display:none;padding:0 0 30px}
+.admin.show{display:block}
+.admin-panel{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px;box-shadow:var(--shadow);margin-top:10px;
+}
+.admin-panel h3{margin:0 0 4px;font-size:17px;color:var(--wine-dark)}
+.admin-panel .sub{margin:0 0 18px;font-size:13px;color:var(--ink-soft)}
+.admin-grid{display:grid;gap:14px;grid-template-columns:1fr 1fr}
+.admin-grid .full{grid-column:1/-1}
+.admin-tools{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;padding-top:18px;border-top:1px dashed var(--line)}
+.note{
+  background:var(--paper-2);border-left:3px solid var(--gold);border-radius:8px;
+  padding:11px 14px;font-size:12.8px;color:var(--ink-soft);margin-top:16px;
+}
+
+/* ---------- toast ---------- */
+#toast{
+  position:fixed;left:50%;bottom:26px;transform:translate(-50%,80px);
+  background:var(--ink);color:#fff;padding:13px 24px;border-radius:999px;
+  font-size:14px;box-shadow:0 10px 30px rgba(0,0,0,.25);z-index:200;
+  opacity:0;transition:.25s;pointer-events:none;max-width:90vw;text-align:center;
+}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+
+footer{
+  background:var(--wine-dark);color:rgba(255,255,255,.82);
+  padding:28px 0;text-align:center;font-size:13px;margin-top:20px;
+}
+footer .motto{font-size:15px;color:var(--gold-light);font-style:italic;margin-bottom:8px}
+footer a{color:var(--gold-light)}
+
+@media(max-width:640px){
+  .brand-txt h1{font-size:16.5px;white-space:normal}
+  .hero h2{font-size:19px}
+  .stat{flex:1 1 88px;padding:10px 12px;min-width:0}
+  .stat .n{font-size:20px}
+  .grid{grid-template-columns:1fr;gap:14px}
+  .admin-grid{grid-template-columns:1fr}
+  .modal-foot{flex-direction:column}
+  .head-row{gap:12px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap head-row">
+    <div class="brand">
+      <div class="logo">♪</div>
+      <div class="brand-txt">
+        <h1>Music Showcase</h1>
+        <p id="tagline">音樂展演社群 · 志工認領志願服務</p>
+      </div>
+    </div>
+    <div class="head-tools">
+      <div class="sync" id="syncBadge"><span class="dot"></span><span id="syncText"></span></div>
+      <div class="lang-switch" id="langSwitch">
+        <button data-lang="zh" class="on">中文</button>
+        <button data-lang="en">English</button>
+        <button data-lang="both">雙語</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div>
+      <h2 id="heroTitle">年度音樂會 · 志工認領</h2>
+      <p id="heroText">每年歲末年終，我們在台大雅頌坊一起見證孩子們的成長。以下列出今年需要的志工任務，歡迎認領你能幫忙的時段——認領後主辦會與你聯繫。</p>
+      <div class="hero-meta">
+        <span class="pill">📍 <b id="pDate">2026 年 12 月 19 日（六）</b></span>
+        <span class="pill">🎻 <b id="pPlace">國立台灣大學 雅頌坊</b></span>
+        <span class="pill">🕒 <b id="pTime">14:00 開演</b></span>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="n" id="stTotal">0</div><div class="l" id="stTotalL">需求項目</div></div>
+      <div class="stat"><div class="n" id="stOpen">0</div><div class="l" id="stOpenL">尚缺人手</div></div>
+      <div class="stat"><div class="n" id="stFilled">0</div><div class="l" id="stFilledL">已認領</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap controls">
+  <div class="search-row">
+    <div class="search-box">
+      <span>🔍</span>
+      <input id="search" type="text" placeholder="搜尋任務、地點或技能…">
+    </div>
+    <button class="btn btn-ghost" id="toggleFull">顯示已額滿</button>
+    <button class="btn btn-ghost" id="adminBtn">⚙ 管理</button>
+  </div>
+  <div class="chips" id="chips"></div>
+</div>
+
+<div class="wrap">
+  <div class="admin" id="adminArea">
+    <div class="admin-panel" id="adminGate">
+      <h3 id="gateTitle">管理員驗證</h3>
+      <p class="sub" id="gateSub">請輸入管理密碼以新增或編輯志工需求。</p>
+      <div class="field">
+        <label id="gateLabel">管理密碼</label>
+        <input id="gatePass" type="password" placeholder="••••••••" autocomplete="current-password">
+      </div>
+      <div class="admin-tools">
+        <button class="btn btn-primary" id="gateGo">進入</button>
+      </div>
+      <div class="note" id="gateHint">💡 預設密碼：showcase</div>
+    </div>
+
+    <div class="admin-panel" id="adminPanel" style="display:none">
+      <h3 id="adminTitle">管理員：新增志工需求</h3>
+      <p class="sub" id="adminSub">僅主辦／核心志工使用。新增後的資料會存在這台裝置的瀏覽器中。</p>
+      <div class="admin-grid">
+        <div class="field full">
+          <label id="lblTitle">任務名稱（中文）</label>
+          <input id="aTitleZh" placeholder="例：音響器材架設與測試">
+        </div>
+        <div class="field full">
+          <label id="lblTitleEn">Task name (English)</label>
+          <input id="aTitleEn" placeholder="e.g. Sound Equipment Setup &amp; Testing">
+        </div>
+        <div class="field">
+          <label id="lblCat">分類</label>
+          <select id="aCat"></select>
+        </div>
+        <div class="field">
+          <label id="lblSlots">需要人數</label>
+          <input id="aSlots" type="number" min="1" value="2">
+        </div>
+        <div class="field">
+          <label id="lblDate">日期</label>
+          <input id="aDate" type="date" value="2026-12-19">
+        </div>
+        <div class="field">
+          <label id="lblTime">時間</label>
+          <input id="aTime" placeholder="例：13:00–17:00">
+        </div>
+        <div class="field full">
+          <label id="lblPlace">地點</label>
+          <input id="aPlace" placeholder="例：台大雅頌坊 舞台區">
+        </div>
+        <div class="field full">
+          <label id="lblDesc">工作內容（中文）</label>
+          <textarea id="aDescZh" placeholder="簡述要做什麼、有誰帶"></textarea>
+        </div>
+        <div class="field full">
+          <label id="lblDescEn">Description (English)</label>
+          <textarea id="aDescEn" placeholder="Short description in English"></textarea>
+        </div>
+        <div class="field full">
+          <label id="lblContact">聯絡窗口</label>
+          <input id="aContact" placeholder="例：音響組 · 阿凱">
+        </div>
+      </div>
+      <div class="admin-tools">
+        <button class="btn btn-primary" id="aAdd">＋ 新增需求</button>
+        <button class="btn btn-ghost" id="aExport">⬇ 匯出 JSON</button>
+        <button class="btn btn-ghost" id="aImportBtn">⬆ 匯入 JSON</button>
+        <input type="file" id="aImport" accept=".json" style="display:none">
+        <button class="btn btn-ghost" id="aPush">⬆ 推送到雲端</button>
+        <button class="btn btn-ghost" id="aReset">↺ 還原預設資料</button>
+      </div>
+      <div class="note" id="adminNote">💡 志工在自己裝置上認領的紀錄不會自動同步回這裡。建議把這個檔案放在雲端硬碟共用，或使用「匯出／匯入 JSON」來合併大家的認領結果。</div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="grid" id="grid"></div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="motto" id="motto">「音樂讓我們聚在一起，見證成長，也珍惜友情。」</div>
+    <div id="footNote">Music Showcase 社群 · 每年於國立台灣大學雅頌坊舉辦年度音樂會</div>
+  </div>
+</footer>
+
+<!-- claim modal -->
+<div class="overlay" id="claimOverlay">
+  <div class="modal">
+    <div class="modal-head">
+      <h3 id="claimHead">認領志工任務</h3>
+      <p id="claimTaskName">—</p>
+    </div>
+    <div class="modal-body">
+      <div class="field" id="fName">
+        <label id="lName">你的名字 <span class="opt">(必填)</span></label>
+        <input id="cName" placeholder="例：王小明 / Kevin">
+        <div class="err" id="eName">請填寫名字</div>
+      </div>
+      <div class="field" id="fContact">
+        <label id="lContact">聯絡方式 <span class="opt">(必填，Line / 手機 / Email)</span></label>
+        <input id="cContact" placeholder="例：Line: kevin 或 0912-345-678">
+        <div class="err" id="eContact">請留一種聯絡方式，方便主辦聯繫</div>
+      </div>
+      <div class="field">
+        <label id="lAvail">可以支援的時間 <span class="opt">(選填)</span></label>
+        <input id="cAvail" placeholder="例：整場都可以 / 只能 13:00–15:00">
+      </div>
+      <div class="field">
+        <label id="lNote">備註 <span class="opt">(選填)</span></label>
+        <textarea id="cNote" placeholder="例：可以開車載器材 / 有音響經驗"></textarea>
+      </div>
+      <div class="note" id="privacyNote">🔒 你填的聯絡資訊只會保存在你自己的瀏覽器與主辦端，不會公開顯示在網站上。</div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" id="cCancel">取消</button>
+      <button class="btn btn-primary" id="cSubmit">確認認領</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+/* =====================================================================
+   Music Showcase — 志工認領看板 / Volunteer sign-up board
+   單一檔案、零後端：資料存在 localStorage，可匯出 / 匯入 JSON 合併。
+   ===================================================================== */
+
+const LS_KEY = 'ms_volunteer_board_v1';
+const LS_LANG = 'ms_board_lang';
+/* 管理密碼：想換密碼改這裡就好 / change the admin password here */
+const ADMIN_PW = 'showcase';
+
+/* =========================================================================
+   雲端同步設定 / Cloud sync
+   -------------------------------------------------------------------------
+   把 Google Apps Script 部署後的 Web App 網址貼進 API_URL，
+   網站就會切換成「雲端模式」：所有人看到的認領狀態即時同步。
+   留空 = 本機模式（資料只存在各自的瀏覽器）。
+
+   Paste the Apps Script Web App URL below to turn on cloud mode.
+   Leave it empty to keep everything local to each browser.
+   ========================================================================= */
+const CONFIG = {
+  API_URL: '',          // 例：https://script.google.com/macros/s/AKfy.../exec
+  POLL_MS: 30000        // 自動重新整理的間隔（毫秒）
+};
+
+const CATS = [
+  { id:'stage',     zh:'舞台・音響', en:'Stage & Sound',  icon:'🎛' },
+  { id:'reception', zh:'接待・報到', en:'Reception',       icon:'🙋' },
+  { id:'media',     zh:'攝影・錄影', en:'Photo & Video',   icon:'📷' },
+  { id:'admin',     zh:'文書・行政', en:'Admin',           icon:'📋' },
+  { id:'food',      zh:'餐飲・點心', en:'Food & Drink',    icon:'🍪' },
+  { id:'kids',      zh:'兒童照顧',   en:'Kids Care',       icon:'🧸' },
+  { id:'setup',     zh:'場地・佈置', en:'Venue & Decor',   icon:'🎀' }
+];
+
+const SEED = [
+  {
+    id:'n01', cat:'setup',
+    title:{ zh:'場地佈置與撤場', en:'Venue Setup & Teardown' },
+    desc:{ zh:'排椅子、鋪桌巾、掛海報與指引牌；演出結束後協助撤場復原。', en:'Arrange chairs, lay tablecloths, hang posters and signs; help restore the hall after the concert.' },
+    skills:{ zh:'無經驗可，現場會分組帶', en:'No experience needed, grouped on site' },
+    date:'2026-12-19', time:'11:00–13:00 / 17:00–18:30',
+    place:{ zh:'台大雅頌坊 全區', en:'NTU Yǎsòng Hall — whole venue' },
+    slots:4, contact:'場務組 · 小美'
+  },
+  {
+    id:'n02', cat:'stage',
+    title:{ zh:'音響器材架設與測試', en:'Sound Equipment Setup & Testing' },
+    desc:{ zh:'協助搬運與架設音響設備、麥克風測試、現場試音與演出中監聽。', en:'Move and set up sound gear, test microphones, run sound check and monitor during the show.' },
+    skills:{ zh:'有基本音響概念佳（會有人帶）', en:'Basic audio knowledge a plus (training provided)' },
+    date:'2026-12-19', time:'12:30–17:30',
+    place:{ zh:'台大雅頌坊 舞台區', en:'NTU Yǎsòng Hall — Stage' },
+    slots:2, contact:'音響組 · 阿凱'
+  },
+  {
+    id:'n03', cat:'stage',
+    title:{ zh:'舞台燈光與鋼琴位置協助', en:'Stage Lighting & Piano Positioning' },
+    desc:{ zh:'依節目順序調整燈光、協助鋼琴與譜架位置擺放。', en:'Adjust lighting cue by cue and help position the piano and music stands.' },
+    skills:{ zh:'細心、能聽指令', en:'Careful, good at following cues' },
+    date:'2026-12-19', time:'13:00–17:00',
+    place:{ zh:'台大雅頌坊 舞台區', en:'NTU Yǎsòng Hall — Stage' },
+    slots:2, contact:'舞台組 · 阿德'
+  },
+  {
+    id:'n04', cat:'reception',
+    title:{ zh:'入口報到與接待', en:'Front Desk Check-in & Reception' },
+    desc:{ zh:'入口簽到桌、發放節目單、引導觀眾入座並協助長輩。', en:'Run the check-in desk, hand out programmes, guide guests to seats and help elderly attendees.' },
+    skills:{ zh:'親切、笑容多一點就好', en:'Friendly and welcoming' },
+    date:'2026-12-19', time:'13:15–14:15',
+    place:{ zh:'雅頌坊 入口大廳', en:'Yǎsòng Hall — Entrance Foyer' },
+    slots:3, contact:'接待組 · 怡君'
+  },
+  {
+    id:'n05', cat:'media',
+    title:{ zh:'演出攝影（照片）', en:'Concert Photography' },
+    desc:{ zh:'拍攝彩排與演出照片，需自備相機，重點捕捉孩子們的表情。', en:'Shoot rehearsal and performance photos. Bring your own camera; focus on the kids\u2019 expressions.' },
+    skills:{ zh:'自備相機、熟悉室內低光拍攝', en:'Own camera; comfortable with low-light indoor shooting' },
+    date:'2026-12-19', time:'13:30–17:30',
+    place:{ zh:'雅頌坊 觀眾席後方', en:'Yǎsòng Hall — rear of auditorium' },
+    slots:2, contact:'記錄組 · Vincent'
+  },
+  {
+    id:'n06', cat:'media',
+    title:{ zh:'演出錄影與簡易剪輯', en:'Video Recording & Light Editing' },
+    desc:{ zh:'架設腳架全程錄影；會後協助整理成一支精華影片（可在家完成）。', en:'Set up a tripod for full recording; later help cut a highlight video (can be done from home).' },
+    skills:{ zh:'自備相機或手機穩定器；會剪輯佳', en:'Own camera or gimbal; editing skills a plus' },
+    date:'2026-12-19', time:'13:30–17:30',
+    place:{ zh:'雅頌坊 觀眾席中央', en:'Yǎsòng Hall — centre of auditorium' },
+    slots:1, contact:'記錄組 · Vincent'
+  },
+  {
+    id:'n07', cat:'food',
+    title:{ zh:'中場茶點準備與分送', en:'Intermission Refreshments' },
+    desc:{ zh:'會前擺設茶點桌、中場協助分送飲水與點心、會後收拾。', en:'Set up the refreshment table, serve drinks and snacks at intermission, clean up afterwards.' },
+    skills:{ zh:'不怕熱、動作俐落', en:'Energetic and quick on your feet' },
+    date:'2026-12-19', time:'14:45–15:30',
+    place:{ zh:'雅頌坊 後方迴廊', en:'Yǎsòng Hall — rear corridor' },
+    slots:3, contact:'餐飲組 · 淑芬'
+  },
+  {
+    id:'n08', cat:'kids',
+    title:{ zh:'小朋友休息區陪伴', en:'Kids\u2019 Rest Area Supervision' },
+    desc:{ zh:'後台休息區陪伴候場的孩子、協助帶隊上下台與上洗手間。', en:'Stay with children waiting backstage, escort them on and off stage and to the restroom.' },
+    skills:{ zh:'喜歡小孩、有耐心', en:'Good with children, patient' },
+    date:'2026-12-19', time:'13:00–17:00',
+    place:{ zh:'雅頌坊 後台休息室', en:'Yǎsòng Hall — backstage lounge' },
+    slots:3, contact:'節目組 · 雅婷'
+  },
+  {
+    id:'n09', cat:'admin',
+    title:{ zh:'節目單印製與現場發放', en:'Programme Printing & Distribution' },
+    desc:{ zh:'協助校對與印製節目單（會前在家可協助）、現場補充分發。', en:'Help proofread and print the programme (can be done from home beforehand) and restock on site.' },
+    skills:{ zh:'細心、會基本文書處理', en:'Detail-oriented, basic document skills' },
+    date:'2026-12-18', time:'彈性（會前線上）',
+    place:{ zh:'遠端／雅頌坊', en:'Remote / Yǎsòng Hall' },
+    slots:2, contact:'行政組 · Peggy'
+  },
+  {
+    id:'n10', cat:'admin',
+    title:{ zh:'會後問卷與照片整理上傳', en:'Post-concert Survey & Photo Upload' },
+    desc:{ zh:'演出後協助發放線上回饋問卷、整理照片並上傳到社群相簿。', en:'Send out the online feedback survey and organise photos into the community album.' },
+    skills:{ zh:'會用 Google 表單／雲端硬碟', en:'Comfortable with Google Forms / Drive' },
+    date:'2026-12-20', time:'彈性',
+    place:{ zh:'遠端', en:'Remote' },
+    slots:2, contact:'行政組 · Peggy'
+  },
+  {
+    id:'n11', cat:'setup',
+    title:{ zh:'樂器搬運與調音支援', en:'Instrument Moving & Tuning Support' },
+    desc:{ zh:'協助搬運鋼琴以外的樂器、譜架與打擊樂器，協助調音師。', en:'Help move instruments, stands and percussion gear; assist the tuner.' },
+    skills:{ zh:'能搬重物佳', en:'Able to lift moderately heavy items' },
+    date:'2026-12-19', time:'12:00–13:00 / 16:30–17:30',
+    place:{ zh:'雅頌坊 側門', en:'Yǎsòng Hall — side entrance' },
+    slots:2, contact:'場務組 · 小美'
+  },
+  {
+    id:'n12', cat:'reception',
+    title:{ zh:'停車與動線引導', en:'Parking & Wayfinding' },
+    desc:{ zh:'在校園周邊協助引導來賓停車與前往雅頌坊的路線。', en:'Guide guests to parking around campus and direct them to Yǎsòng Hall.' },
+    skills:{ zh:'熟悉台大校園佳', en:'Familiar with NTU campus a plus' },
+    date:'2026-12-19', time:'13:00–14:30',
+    place:{ zh:'台大校園周邊', en:'NTU campus surroundings' },
+    slots:2, contact:'接待組 · 怡君'
+  }
+];
+
+/* ---------------- i18n ---------------- */
+const T = {
+  zh:{
+    tagline:'音樂展演社群 · 志工認領志願服務',
+    heroTitle:'年度音樂會 · 志工認領',
+    heroText:'每年歲末年終，我們在台大雅頌坊一起見證孩子們的成長。以下列出今年需要的志工任務，歡迎認領你能幫忙的時段——認領後主辦會與你聯繫。',
+    pDate:'2026 年 12 月 19 日（六）',
+    pPlace:'國立台灣大學 雅頌坊',
+    pTime:'14:00 開演',
+    stTotal:'需求項目', stOpen:'尚缺人手', stFilled:'已認領',
+    searchPh:'搜尋任務、地點或技能…',
+    showFull:'顯示已額滿', hideFull:'隱藏已額滿',
+    admin:'⚙ 管理', adminOn:'⚙ 關閉管理',
+    statusOpen:'尚缺 {n} 人', statusFull:'已額滿', statusClosed:'已結束',
+    mLabels:{ date:'日期', time:'時間', place:'地點', skills:'需要', slots:'人力' },
+    slotsVal:'{done} / {total} 人',
+    claimants:'已認領的夥伴',
+    claimBtn:'我要認領', undoBtn:'取消',
+    fullBtn:'已額滿',
+    empty:'沒有符合條件的任務',
+    emptySub:'試試換個關鍵字或分類吧！',
+    claimHead:'認領志工任務',
+    lName:'你的名字', lContact:'聯絡方式', lAvail:'可以支援的時間', lNote:'備註',
+    opt:'(選填)', req:'(必填)',
+    eName:'請填寫名字', eContact:'請留一種聯絡方式，方便主辦聯繫',
+    cCancel:'取消', cSubmit:'確認認領',
+    privacy:'🔒 你填的聯絡資訊只會保存在你自己的瀏覽器與主辦端，不會公開顯示在網站上。',
+    adminTitle:'管理員：新增志工需求',
+    adminSub:'僅主辦／核心志工使用。新增的資料會存在這台裝置的瀏覽器中。',
+    lblTitle:'任務名稱（中文）', lblTitleEn:'Task name (English)', lblCat:'分類',
+    lblSlots:'需要人數', lblDate:'日期', lblTime:'時間', lblPlace:'地點',
+    lblDesc:'工作內容（中文）', lblDescEn:'Description (English)', lblContact:'聯絡窗口',
+    aAdd:'＋ 新增需求', aExport:'⬇ 匯出 JSON', aImport:'⬆ 匯入 JSON', aReset:'↺ 還原預設資料',
+    adminNote:'💡 志工在自己裝置上認領的紀錄不會自動同步回這裡。建議把這個檔案放在雲端硬碟共用，或使用「匯出／匯入 JSON」來合併大家的認領結果。',
+    motto:'「音樂讓我們聚在一起，見證成長，也珍惜友情。」',
+    footNote:'Music Showcase 社群 · 每年於國立台灣大學雅頌坊舉辦年度音樂會',
+    newNeed:'請至少填寫中文任務名稱',
+    added:'已新增任務：{t}',
+    claimed:'認領成功，謝謝你 {n}！主辦會盡快與你聯繫 🎵',
+    undone:'已取消認領',
+    dupName:'同一個名字已經認領過這項任務囉',
+    exported:'已匯出 JSON 檔',
+    imported:'已匯入 {n} 筆任務',
+    importBad:'檔案格式不對，匯入失敗',
+    resetOk:'已還原成預設資料（含你的認領紀錄一併清除）',
+    resetConfirm:'確定要還原成預設資料嗎？目前的認領紀錄會被清除。',
+    passPrompt:'請輸入管理密碼（預設：showcase）',
+    passBad:'密碼不對喔',
+    passOk:'驗證成功，可以開始編輯了',
+    gateTitle:'管理員驗證',
+    gateSub:'請輸入管理密碼以新增或編輯志工需求。',
+    gateLabel:'管理密碼',
+    gateGo:'進入',
+    gateHint:'💡 預設密碼：{pw}（可在檔案內 ADMIN_PW 修改）',
+    syncLocal:'本機模式',
+    syncLoading:'連線中…',
+    syncOnline:'雲端已連線',
+    syncError:'連線失敗',
+    netErr:'⚠ 連線失敗：{e}',
+    saved:'已同步到雲端',
+    push:'⬆ 推送到雲端',
+    pushNoCloud:'目前是本機模式。請先在 index.html 的 CONFIG.API_URL 填入 Apps Script 網址。',
+    pushConfirm:'確定要把畫面這份資料整份覆蓋到雲端嗎？雲端現有的認領紀錄會被取代。',
+    pushOk:'已推送到雲端',
+    adminNoteCloud:'☁️ 雲端模式已啟用：每個人認領後會即時寫進 Google Sheet，這裡看到的永遠是最新狀態，不需要再匯出／匯入。',
+    allCat:'全部'
+  },
+  en:{
+    tagline:'A music community · volunteer sign-up board',
+    heroTitle:'Annual Concert · Volunteer Sign-up',
+    heroText:'Every December we gather at NTU Yǎsòng Hall to watch our children grow through music. Below are this year\u2019s volunteer tasks — claim the slot you can help with and the organiser will get in touch.',
+    pDate:'Saturday, 19 December 2026',
+    pPlace:'NTU Yǎsòng Hall, Taipei',
+    pTime:'Starts 14:00',
+    stTotal:'Tasks', stOpen:'Slots open', stFilled:'Claimed',
+    searchPh:'Search tasks, places or skills…',
+    showFull:'Show filled', hideFull:'Hide filled',
+    admin:'⚙ Admin', adminOn:'⚙ Close admin',
+    statusOpen:'{n} still needed', statusFull:'Filled', statusClosed:'Closed',
+    mLabels:{ date:'Date', time:'Time', place:'Place', skills:'Needs', slots:'Helpers' },
+    slotsVal:'{done} / {total} filled',
+    claimants:'Volunteers signed up',
+    claimBtn:'Claim this task', undoBtn:'Undo',
+    fullBtn:'Filled',
+    empty:'No tasks match your filters',
+    emptySub:'Try another keyword or category.',
+    claimHead:'Claim a volunteer task',
+    lName:'Your name', lContact:'Contact', lAvail:'Availability', lNote:'Notes',
+    opt:'(optional)', req:'(required)',
+    eName:'Please enter your name', eContact:'Please leave a contact so we can reach you',
+    cCancel:'Cancel', cSubmit:'Confirm',
+    privacy:'🔒 Your contact details are only stored in your own browser and with the organiser — never shown publicly on this site.',
+    adminTitle:'Admin: add a volunteer task',
+    adminSub:'For the organiser / core volunteers. New tasks are saved in this device\u2019s browser.',
+    lblTitle:'Task name (Chinese)', lblTitleEn:'Task name (English)', lblCat:'Category',
+    lblSlots:'Helpers needed', lblDate:'Date', lblTime:'Time', lblPlace:'Place',
+    lblDesc:'Description (Chinese)', lblDescEn:'Description (English)', lblContact:'Contact person',
+    aAdd:'+ Add task', aExport:'⬇ Export JSON', aImport:'⬆ Import JSON', aReset:'↺ Reset to defaults',
+    adminNote:'💡 Claims made on other people\u2019s devices do not sync back here automatically. Keep this file in shared cloud storage, or use Export / Import JSON to merge everyone\u2019s claims.',
+    motto:'\u201cMusic brings us together — to grow, and to cherish friendship.\u201d',
+    footNote:'Music Showcase community · Annual concert at NTU Yǎsòng Hall',
+    newNeed:'Please enter at least the Chinese task name',
+    added:'Task added: {t}',
+    claimed:'Signed up — thank you {n}! The organiser will be in touch 🎵',
+    undone:'Sign-up cancelled',
+    dupName:'Someone with the same name already claimed this task',
+    exported:'JSON exported',
+    imported:'Imported {n} tasks',
+    importBad:'Wrong file format — import failed',
+    resetOk:'Reset to default data (claims cleared)',
+    resetConfirm:'Reset to the default data? All current claims will be cleared.',
+    passPrompt:'Enter admin password (default: showcase)',
+    passBad:'Wrong password',
+    passOk:'Unlocked — you can edit now',
+    gateTitle:'Admin access',
+    gateSub:'Enter the admin password to add or edit volunteer tasks.',
+    gateLabel:'Admin password',
+    gateGo:'Enter',
+    gateHint:'💡 Default password: {pw} (change ADMIN_PW in the file)',
+    syncLocal:'Local mode',
+    syncLoading:'Connecting…',
+    syncOnline:'Cloud synced',
+    syncError:'Connection failed',
+    netErr:'⚠ Connection failed: {e}',
+    saved:'Synced to cloud',
+    push:'⬆ Push to cloud',
+    pushNoCloud:'Local mode. Set CONFIG.API_URL to your Apps Script URL first.',
+    pushConfirm:'Overwrite the cloud copy with what you see now? Existing cloud claims will be replaced.',
+    pushOk:'Pushed to cloud',
+    adminNoteCloud:'☁️ Cloud mode is on: every claim is written straight to the Google Sheet, so what you see here is always current — no exporting or importing needed.',
+    allCat:'All'
+  }
+};
+
+/* ---------------- state ---------------- */
+let lang = localStorage.getItem(LS_LANG) || 'zh';
+let needs = load();
+let filterCat = 'all';
+let query = '';
+let showFull = false;
+let pendingId = null;
+
+function load(){
+  try{
+    const raw = localStorage.getItem(LS_KEY);
+    if(raw){
+      const d = JSON.parse(raw);
+      if(Array.isArray(d) && d.length) return d;
+    }
+  }catch(e){ console.warn('load failed', e); }
+  return JSON.parse(JSON.stringify(SEED));
+}
+function save(){
+  try{ localStorage.setItem(LS_KEY, JSON.stringify(needs)); }
+  catch(e){ /* 無痕模式等情況忽略 / ignore in private mode */ }
+}
+
+/* ===================== 雲端同步層 / cloud layer ===================== */
+let cloud = false;
+
+function setSyncBadge(state){
+  const el = document.getElementById('syncBadge');
+  const tx = document.getElementById('syncText');
+  if(!el || !tx) return;
+  el.dataset.state = state;
+  el.className = 'sync show ' + state;
+  const map = { local:'syncLocal', loading:'syncLoading', online:'syncOnline', error:'syncError' };
+  tx.textContent = t(map[state] || 'syncLocal');
+}
+
+async function apiList(){
+  const sep = (CONFIG.API_URL.indexOf('?') === -1) ? '?' : '&';
+  const r = await fetch(CONFIG.API_URL + sep + 'action=list&t=' + Date.now(),
+                       { method:'GET', redirect:'follow' });
+  if(!r.ok) throw new Error('HTTP ' + r.status);
+  const j = await r.json();
+  if(!j.ok) throw new Error(j.error || 'api error');
+  return j.needs || [];
+}
+
+async function apiPost(payload){
+  const r = await fetch(CONFIG.API_URL, {
+    method:'POST',
+    /* text/plain 讓瀏覽器當成簡單請求，避開 CORS preflight */
+    headers:{ 'Content-Type':'text/plain;charset=utf-8' },
+    body: JSON.stringify(payload),
+    redirect:'follow'
+  });
+  if(!r.ok) throw new Error('HTTP ' + r.status);
+  const j = await r.json();
+  if(!j.ok) throw new Error(j.error || 'api error');
+  return j;
+}
+
+async function refresh(silent){
+  if(!cloud) return false;
+  try{
+    needs = await apiList();
+    save();
+    renderChips(); render();
+    setSyncBadge('online');
+    return true;
+  }catch(e){
+    setSyncBadge('error');
+    if(!silent) toast(fmt(t('netErr'), { e: e.message }));
+    return false;
+  }
+}
+
+async function initSync(){
+  if(!CONFIG.API_URL){ cloud = false; setSyncBadge('local'); updateAdminLabels(); return; }
+  cloud = true;
+  setSyncBadge('loading');
+  const ok = await refresh(true);
+  updateAdminLabels();
+  if(ok){
+    setInterval(function(){ refresh(true); }, CONFIG.POLL_MS);
+    window.addEventListener('focus', function(){ refresh(true); });
+    document.addEventListener('visibilitychange', function(){
+      if(!document.hidden) refresh(true);
+    });
+  }
+}
+function t(k){
+  const zh = T.zh[k], en = T.en[k];
+  if(zh === undefined && en === undefined) return k;
+  if(lang === 'both'){
+    if(zh && en && zh !== en) return zh + ' · ' + en;
+    return zh || en || k;
+  }
+  return (lang === 'en' ? (en || zh) : (zh || en)) || k;
+}
+/* bilingual block HTML: 中文主行 + 英文次行（給長段落用） */
+function tbi(k){
+  const zh = T.zh[k] || '', en = T.en[k] || '';
+  if(lang === 'en') return esc(en || zh);
+  if(lang === 'both' && en && en !== zh)
+    return esc(zh) + '<span class="en-block">' + esc(en) + '</span>';
+  return esc(zh || en);
+}
+function fmt(str, vars){
+  return String(str).replace(/\{(\w+)\}/g, (m,k) => (vars && vars[k] !== undefined) ? vars[k] : m);
+}
+function esc(s){
+  return String(s == null ? '' : s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+/* keeps line breaks, escapes everything else */
+function nl(s){ return esc(s).replace(/\n/g,'<br>'); }
+
+function catOf(id){ return CATS.find(c => c.id === id) || { id:'other', zh:'其他', en:'Other', icon:'🎵' }; }
+function slotsLeft(n){ return Math.max(0, n.slots - (n.claimants || []).length); }
+function isFull(n){ return slotsLeft(n) === 0; }
+
+/* ---------- language ---------- */
+function setLang(l){
+  lang = l;
+  localStorage.setItem(LS_LANG, l);
+  document.documentElement.lang = (l === 'en') ? 'en' : 'zh-Hant';
+  [...document.querySelectorAll('#langSwitch button')].forEach(b => {
+    b.classList.toggle('on', b.dataset.lang === l);
+  });
+  applyStatic(); renderChips(); render(); updateAdminLabels();
+  document.getElementById('search').placeholder = t('searchPh');
+  document.getElementById('toggleFull').textContent = showFull ? t('hideFull') : t('showFull');
+  document.getElementById('adminBtn').textContent = adminOpen ? t('adminOn') : t('admin');
+  const sb = document.getElementById('syncBadge');
+  if(sb && sb.dataset.state) setSyncBadge(sb.dataset.state);
+}
+
+function applyStatic(){
+  const set  = (id, v) => { const el = document.getElementById(id); if(el) el.textContent = v; };
+  const setH = (id, v) => { const el = document.getElementById(id); if(el) el.innerHTML = v; };
+  set('tagline', t('tagline'));
+  set('heroTitle', t('heroTitle'));
+  setH('heroText', tbi('heroText'));
+  set('pDate', t('pDate'));
+  set('pPlace', t('pPlace'));
+  set('pTime', t('pTime'));
+  set('stTotalL', t('stTotal'));
+  set('stOpenL', t('stOpen'));
+  set('stFilledL', t('stFilled'));
+  setH('motto', tbi('motto'));
+  setH('footNote', tbi('footNote'));
+  set('claimHead', t('claimHead'));
+  set('eName', t('eName'));
+  set('eContact', t('eContact'));
+  set('cCancel', t('cCancel'));
+  set('cSubmit', t('cSubmit'));
+  setH('privacyNote', tbi('privacy'));
+  document.getElementById('lName').innerHTML = esc(t('lName')) + ' <span class="opt">' + esc(t('req')) + '</span>';
+  document.getElementById('lContact').innerHTML = esc(t('lContact')) + ' <span class="opt">' + esc(t('req')) + '</span>';
+  document.getElementById('lAvail').innerHTML = esc(t('lAvail')) + ' <span class="opt">' + esc(t('opt')) + '</span>';
+  document.getElementById('lNote').innerHTML = esc(t('lNote')) + ' <span class="opt">' + esc(t('opt')) + '</span>';
+}
+
+function updateAdminLabels(){
+  const m = {
+    adminTitle:'adminTitle',
+    lblTitle:'lblTitle', lblTitleEn:'lblTitleEn', lblCat:'lblCat',
+    lblSlots:'lblSlots', lblDate:'lblDate', lblTime:'lblTime', lblPlace:'lblPlace',
+    lblDesc:'lblDesc', lblDescEn:'lblDescEn', lblContact:'lblContact',
+    aAdd:'aAdd', aExport:'aExport', aImportBtn:'aImport', aPush:'aPush', aReset:'aReset'
+  };
+  Object.keys(m).forEach(elId => {
+    const el = document.getElementById(elId);
+    if(el) el.textContent = t(m[elId]);
+  });
+  const sub = document.getElementById('adminSub');
+  if(sub) sub.innerHTML = tbi('adminSub');
+  const note = document.getElementById('adminNote');
+  if(note) note.innerHTML = tbi(cloud ? 'adminNoteCloud' : 'adminNote');
+  const setT = (id, v) => { const el = document.getElementById(id); if(el) el.textContent = v; };
+  setT('gateTitle', t('gateTitle'));
+  setT('gateLabel', t('gateLabel'));
+  setT('gateGo', t('gateGo'));
+  setT('gateHint', fmt(t('gateHint'), { pw: ADMIN_PW }));
+  const gsub = document.getElementById('gateSub');
+  if(gsub) gsub.innerHTML = tbi('gateSub');
+}
+
+/* ---------- render ---------- */
+function renderChips(){
+  const box = document.getElementById('chips');
+  const counts = {};
+  CATS.forEach(c => counts[c.id] = 0);
+  needs.forEach(n => { if(counts[n.cat] !== undefined) counts[n.cat]++; });
+  let html = `<button class="chip ${filterCat==='all'?'on':''}" data-cat="all">` +
+    `${esc(t('allCat'))} (${needs.length})</button>`;
+  CATS.forEach(c => {
+    if(!counts[c.id]) return;
+    const label = (lang === 'en') ? c.en : c.zh;
+    const label2 = (lang === 'both') ? ' ' + c.en : '';
+    html += `<button class="chip ${filterCat===c.id?'on':''}" data-cat="${c.id}">` +
+      `${c.icon} ${esc(label)}${esc(label2)} (${counts[c.id]})</button>`;
+  });
+  box.innerHTML = html;
+  [...box.querySelectorAll('.chip')].forEach(b => {
+    b.onclick = () => { filterCat = b.dataset.cat; renderChips(); render(); };
+  });
+}
+
+function match(n){
+  if(filterCat !== 'all' && n.cat !== filterCat) return false;
+  if(!showFull && isFull(n)) return false;
+  if(!query) return true;
+  const q = query.toLowerCase();
+  const pool = [
+    n.title && n.title.zh, n.title && n.title.en,
+    n.desc && n.desc.zh, n.desc && n.desc.en,
+    n.place && n.place.zh, n.place && n.place.en,
+    n.skills && n.skills.zh, n.skills && n.skills.en,
+    n.contact, catOf(n.cat).zh, catOf(n.cat).en, n.date, n.time
+  ].filter(Boolean).join(' ').toLowerCase();
+  return pool.indexOf(q) !== -1;
+}
+
+function bi(zh, en, cls){
+  if(lang === 'en') return esc(en || zh || '');
+  if(lang === 'both') return esc(zh || en || '') + (en ? `<span class="en">${esc(en)}</span>` : '');
+  return esc(zh || en || '');
+}
+
+function render(){
+  const grid = document.getElementById('grid');
+  const list = needs.filter(match);
+  const totalSlots = needs.reduce((a,n) => a + n.slots, 0);
+  const filled = needs.reduce((a,n) => a + (n.claimants || []).length, 0);
+  document.getElementById('stTotal').textContent = needs.length;
+  document.getElementById('stOpen').textContent = Math.max(0, totalSlots - filled);
+  document.getElementById('stFilled').textContent = filled;
+
+  if(!list.length){
+    grid.innerHTML = `<div class="empty"><span class="big">🎼</span>
+      <div style="font-size:16px;font-weight:600;color:#2b2320">${esc(t('empty'))}</div>
+      <div>${esc(t('emptySub'))}</div></div>`;
+    return;
+  }
+
+  grid.innerHTML = list.map(n => {
+    const c = catOf(n.cat);
+    const left = slotsLeft(n);
+    const done = (n.claimants || []).length;
+    const full = left === 0;
+    const pct = n.slots ? Math.round(done / n.slots * 100) : 0;
+    const catLabel = (lang === 'en') ? c.en : (lang === 'both' ? c.zh + ' · ' + c.en : c.zh);
+    const statusCls = full ? 'full' : 'open';
+    const statusTxt = full ? t('statusFull') : fmt(t('statusOpen'), { n: left });
+
+    const claimantsHtml = done ? `<div class="claimants">
+      <h4>${esc(t('claimants'))}</h4>
+      ${n.claimants.map((p,i) => `<div class="claimant">
+          <span><span class="who">${esc(p.name)}</span>
+          <span class="when">${p.avail ? ' · ' + esc(p.avail) : ''}</span></span>
+          <button class="undo" data-undo="${esc(n.id)}" data-idx="${i}">${esc(t('undoBtn'))}</button>
+        </div>`).join('')}
+    </div>` : '';
+
+    return `<article class="card ${full ? 'is-full' : ''}">
+      <div class="card-top">
+        <span class="badge">${c.icon} ${esc(catLabel)}</span>
+        <span class="status ${statusCls}">${esc(statusTxt)}</span>
+      </div>
+      <h3>${bi(n.title.zh, n.title.en)}</h3>
+      <p class="desc">${bi(n.desc.zh, n.desc.en)}</p>
+      <div class="meta">
+        <div><span class="k">🗓</span><span class="v"><b>${esc(n.date)}</b> · ${esc(n.time)}</span></div>
+        <div><span class="k">📍</span><span class="v">${bi(n.place.zh, n.place.en)}</span></div>
+        ${n.skills ? `<div><span class="k">✨</span><span class="v">${bi(n.skills.zh, n.skills.en)}</span></div>` : ''}
+        ${n.contact ? `<div><span class="k">👤</span><span class="v">${esc(n.contact)}</span></div>` : ''}
+      </div>
+      <div class="progress-wrap">
+        <div class="progress-top"><span>${esc(t('mLabels').slots)}</span>
+          <span>${esc(fmt(t('slotsVal'), { done: done, total: n.slots }))}</span></div>
+        <div class="progress"><i style="width:${pct}%"></i></div>
+      </div>
+      ${claimantsHtml}
+      <div class="card-actions">
+        <button class="btn ${full ? 'btn-ghost' : 'btn-gold'}" data-claim="${esc(n.id)}" ${full ? 'disabled' : ''}>
+          ${full ? esc(t('fullBtn')) : esc(t('claimBtn'))}
+        </button>
+      </div>
+    </article>`;
+  }).join('');
+
+  grid.querySelectorAll('[data-claim]').forEach(b => {
+    b.onclick = () => openClaim(b.dataset.claim);
+  });
+  grid.querySelectorAll('[data-undo]').forEach(b => {
+    b.onclick = () => undo(b.dataset.undo, Number(b.dataset.idx));
+  });
+}
+
+/* ---------- claim ---------- */
+function openClaim(id){
+  const n = needs.find(x => x.id === id);
+  if(!n) return;
+  pendingId = id;
+  document.getElementById('claimTaskName').textContent =
+    (lang === 'en' ? n.title.en : (lang === 'both' ? n.title.zh + ' / ' + n.title.en : n.title.zh));
+  ['cName','cContact','cAvail','cNote'].forEach(i => document.getElementById(i).value = '');
+  ['fName','fContact'].forEach(i => document.getElementById(i).classList.remove('bad'));
+  document.getElementById('claimOverlay').classList.add('show');
+  setTimeout(() => document.getElementById('cName').focus(), 60);
+}
+
+function closeClaim(){
+  document.getElementById('claimOverlay').classList.remove('show');
+  pendingId = null;
+}
+
+function submitClaim(){
+  const n = needs.find(x => x.id === pendingId);
+  if(!n) return closeClaim();
+  const name = document.getElementById('cName').value.trim();
+  const contact = document.getElementById('cContact').value.trim();
+  const avail = document.getElementById('cAvail').value.trim();
+  const note = document.getElementById('cNote').value.trim();
+  document.getElementById('fName').classList.toggle('bad', !name);
+  document.getElementById('fContact').classList.toggle('bad', !contact);
+  if(!name || !contact) return;
+  if(isFull(n)){ toast(t('statusFull')); closeClaim(); render(); return; }
+
+  /* --- 雲端模式：送到 Google Sheet --- */
+  if(cloud){
+    const btn = document.getElementById('cSubmit');
+    btn.classList.add('busy');
+    apiPost({ action:'claim', id:n.id, person:{ name:name, contact:contact, avail:avail, note:note } })
+      .then(j => {
+        if(j.needs){ needs = j.needs; save(); }
+        closeClaim(); renderChips(); render();
+        toast(fmt(t('claimed'), { n: name }));
+      })
+      .catch(err => {
+        const code = String(err.message || '');
+        if(code === 'full'){ toast(t('statusFull')); }
+        else if(code === 'duplicate'){ toast(t('dupName')); }
+        else { toast(fmt(t('netErr'), { e: code })); }
+        closeClaim(); refresh(true);
+      })
+      .finally(() => btn.classList.remove('busy'));
+    return;
+  }
+
+  /* --- 本機模式 --- */
+  n.claimants = n.claimants || [];
+  if(n.claimants.some(p => String(p.name).toLowerCase() === name.toLowerCase())){
+    toast(t('dupName'));
+    return;
+  }
+  n.claimants.push({ name: name, contact: contact, avail: avail, note: note, at: new Date().toISOString() });
+  save();
+  closeClaim();
+  renderChips();
+  render();
+  toast(fmt(t('claimed'), { n: name }));
+}
+
+function undo(id, idx){
+  const n = needs.find(x => x.id === id);
+  if(!n || !n.claimants) return;
+  if(cloud){
+    apiPost({ action:'unclaim', id:id, index:idx })
+      .then(j => {
+        if(j.needs){ needs = j.needs; save(); }
+        renderChips(); render();
+        toast(t('undone'));
+      })
+      .catch(err => { toast(fmt(t('netErr'), { e: err.message })); refresh(true); });
+    return;
+  }
+  n.claimants.splice(idx, 1);
+  save();
+  renderChips();
+  render();
+  toast(t('undone'));
+}
+
+/* ---------- admin ---------- */
+let adminOpen = false;
+let adminAuthed = false;
+
+function toggleAdmin(){
+  adminOpen = !adminOpen;
+  const area = document.getElementById('adminArea');
+  area.classList.toggle('show', adminOpen);
+  const gate = document.getElementById('adminGate');
+  const panel = document.getElementById('adminPanel');
+  gate.style.display = adminAuthed ? 'none' : 'block';
+  panel.style.display = adminAuthed ? 'block' : 'none';
+  document.getElementById('adminBtn').textContent = adminOpen ? t('adminOn') : t('admin');
+  document.getElementById('adminBtn').classList.toggle('on', adminOpen);
+  if(adminOpen){
+    area.scrollIntoView({ behavior:'smooth', block:'center' });
+    if(!adminAuthed) setTimeout(() => document.getElementById('gatePass').focus(), 300);
+  }
+}
+
+function tryUnlock(){
+  const pw = document.getElementById('gatePass').value.trim();
+  if(pw !== ADMIN_PW){ toast(t('passBad')); document.getElementById('gatePass').value = ''; return; }
+  adminAuthed = true;
+  document.getElementById('gatePass').value = '';
+  document.getElementById('adminGate').style.display = 'none';
+  document.getElementById('adminPanel').style.display = 'block';
+  toast(t('passOk'));
+}
+
+function fillCatSelect(){
+  const sel = document.getElementById('aCat');
+  sel.innerHTML = CATS.map(c =>
+    `<option value="${c.id}">${c.icon} ${esc(c.zh)} / ${esc(c.en)}</option>`).join('');
+}
+
+function addNeed(){
+  const zh = document.getElementById('aTitleZh').value.trim();
+  const en = document.getElementById('aTitleEn').value.trim();
+  if(!zh && !en){ toast(t('newNeed')); document.getElementById('aTitleZh').focus(); return; }
+  const n = {
+    id: 'n' + Date.now().toString(36),
+    cat: document.getElementById('aCat').value,
+    title: { zh: zh || en, en: en || zh },
+    desc: {
+      zh: document.getElementById('aDescZh').value.trim(),
+      en: document.getElementById('aDescEn').value.trim()
+    },
+    skills: { zh:'', en:'' },
+    date: document.getElementById('aDate').value || '',
+    time: document.getElementById('aTime').value.trim(),
+    place: {
+      zh: document.getElementById('aPlace').value.trim(),
+      en: document.getElementById('aPlace').value.trim()
+    },
+    slots: Math.max(1, parseInt(document.getElementById('aSlots').value, 10) || 1),
+    contact: document.getElementById('aContact').value.trim(),
+    claimants: []
+  };
+  clearAdminForm();
+
+  if(cloud){
+    apiPost({ action:'add', need:n })
+      .then(j => {
+        if(j.needs){ needs = j.needs; save(); }
+        else { needs.unshift(n); }
+        renderChips(); render();
+        toast(fmt(t('added'), { t: n.title.zh }));
+      })
+      .catch(err => toast(fmt(t('netErr'), { e: err.message })));
+    return;
+  }
+
+  needs.unshift(n);
+  save();
+  renderChips();
+  render();
+  toast(fmt(t('added'), { t: n.title.zh }));
+}
+
+function clearAdminForm(){
+  ['aTitleZh','aTitleEn','aTime','aPlace','aDescZh','aDescEn','aContact']
+    .forEach(i => { document.getElementById(i).value = ''; });
+  document.getElementById('aSlots').value = 2;
+}
+
+function exportJson(){
+  const blob = new Blob([JSON.stringify(needs, null, 2)], { type:'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'music-showcase-volunteers-' + new Date().toISOString().slice(0,10) + '.json';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  URL.revokeObjectURL(a.href);
+  toast(t('exported'));
+}
+
+function importJson(file){
+  const r = new FileReader();
+  r.onload = () => {
+    try{
+      const d = JSON.parse(r.result);
+      if(!Array.isArray(d) || !d.length) throw new Error('not a non-empty array');
+      if(cloud){
+        apiPost({ action:'replaceAll', needs:d })
+          .then(j => {
+            needs = j.needs || d;
+            save(); renderChips(); render();
+            toast(fmt(t('imported'), { n: needs.length }));
+          })
+          .catch(err => toast(fmt(t('netErr'), { e: err.message })));
+        return;
+      }
+      needs = d;
+      save(); renderChips(); render();
+      toast(fmt(t('imported'), { n: d.length }));
+    }catch(e){ console.warn(e); toast(t('importBad')); }
+  };
+  r.readAsText(file);
+}
+
+function pushToCloud(){
+  if(!cloud){ toast(t('pushNoCloud')); return; }
+  if(!confirm(t('pushConfirm'))) return;
+  apiPost({ action:'replaceAll', needs:needs })
+    .then(j => {
+      needs = j.needs || needs;
+      save(); renderChips(); render();
+      toast(t('pushOk'));
+    })
+    .catch(err => toast(fmt(t('netErr'), { e: err.message })));
+}
+
+function resetAll(){
+  if(!confirm(t('resetConfirm'))) return;
+  const seeded = JSON.parse(JSON.stringify(SEED));
+  if(cloud){
+    apiPost({ action:'replaceAll', needs:seeded })
+      .then(j => {
+        needs = j.needs || seeded;
+        save(); renderChips(); render();
+        toast(t('resetOk'));
+      })
+      .catch(err => toast(fmt(t('netErr'), { e: err.message })));
+    return;
+  }
+  needs = seeded;
+  save(); renderChips(); render();
+  toast(t('resetOk'));
+}
+
+/* ---------- toast ---------- */
+let toastTimer = null;
+function toast(msg){
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('show'), 3200);
+}
+
+/* ---------- wiring ---------- */
+document.getElementById('langSwitch').onclick = (e) => {
+  const b = e.target.closest('button');
+  if(b) setLang(b.dataset.lang);
+};
+document.getElementById('search').oninput = (e) => { query = e.target.value.trim(); render(); };
+document.getElementById('toggleFull').onclick = () => {
+  showFull = !showFull;
+  document.getElementById('toggleFull').textContent = showFull ? t('hideFull') : t('showFull');
+  document.getElementById('toggleFull').classList.toggle('on', showFull);
+  render();
+};
+document.getElementById('adminBtn').onclick = toggleAdmin;
+document.getElementById('cCancel').onclick = closeClaim;
+document.getElementById('cSubmit').onclick = submitClaim;
+document.getElementById('claimOverlay').onclick = (e) => { if(e.target.id === 'claimOverlay') closeClaim(); };
+document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeClaim(); });
+document.getElementById('aAdd').onclick = addNeed;
+document.getElementById('gateGo').onclick = tryUnlock;
+document.getElementById('aPush').onclick = pushToCloud;
+document.getElementById('gatePass').onkeydown = (e) => { if(e.key === 'Enter'){ e.preventDefault(); tryUnlock(); } };
+document.getElementById('aExport').onclick = exportJson;
+document.getElementById('aImportBtn').onclick = () => document.getElementById('aImport').click();
+document.getElementById('aImport').onchange = (e) => { if(e.target.files[0]) importJson(e.target.files[0]); };
+document.getElementById('aReset').onclick = resetAll;
+
+fillCatSelect();
+setLang(lang);
+initSync();
+</script>
+</body>
+</html>

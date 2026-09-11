@@ -1,0 +1,290 @@
+[
+ {
+  "id": "n01",
+  "cat": "setup",
+  "title": {
+   "zh": "場地佈置與撤場",
+   "en": "Venue Setup & Teardown"
+  },
+  "desc": {
+   "zh": "排椅子、鋪桌巾、掛海報與指引牌；演出結束後協助撤場復原。",
+   "en": "Arrange chairs, lay tablecloths, hang posters and signs; help restore the hall after the concert."
+  },
+  "skills": {
+   "zh": "無經驗可，現場會分組帶",
+   "en": "No experience needed, grouped on site"
+  },
+  "date": "2026-12-19",
+  "time": "11:00–13:00 / 17:00–18:30",
+  "place": {
+   "zh": "台大雅頌坊 全區",
+   "en": "NTU Yǎsòng Hall — whole venue"
+  },
+  "slots": 4,
+  "contact": "場務組 · 小美"
+ },
+ {
+  "id": "n02",
+  "cat": "stage",
+  "title": {
+   "zh": "音響器材架設與測試",
+   "en": "Sound Equipment Setup & Testing"
+  },
+  "desc": {
+   "zh": "協助搬運與架設音響設備、麥克風測試、現場試音與演出中監聽。",
+   "en": "Move and set up sound gear, test microphones, run sound check and monitor during the show."
+  },
+  "skills": {
+   "zh": "有基本音響概念佳（會有人帶）",
+   "en": "Basic audio knowledge a plus (training provided)"
+  },
+  "date": "2026-12-19",
+  "time": "12:30–17:30",
+  "place": {
+   "zh": "台大雅頌坊 舞台區",
+   "en": "NTU Yǎsòng Hall — Stage"
+  },
+  "slots": 2,
+  "contact": "音響組 · 阿凱"
+ },
+ {
+  "id": "n03",
+  "cat": "stage",
+  "title": {
+   "zh": "舞台燈光與鋼琴位置協助",
+   "en": "Stage Lighting & Piano Positioning"
+  },
+  "desc": {
+   "zh": "依節目順序調整燈光、協助鋼琴與譜架位置擺放。",
+   "en": "Adjust lighting cue by cue and help position the piano and music stands."
+  },
+  "skills": {
+   "zh": "細心、能聽指令",
+   "en": "Careful, good at following cues"
+  },
+  "date": "2026-12-19",
+  "time": "13:00–17:00",
+  "place": {
+   "zh": "台大雅頌坊 舞台區",
+   "en": "NTU Yǎsòng Hall — Stage"
+  },
+  "slots": 2,
+  "contact": "舞台組 · 阿德"
+ },
+ {
+  "id": "n04",
+  "cat": "reception",
+  "title": {
+   "zh": "入口報到與接待",
+   "en": "Front Desk Check-in & Reception"
+  },
+  "desc": {
+   "zh": "入口簽到桌、發放節目單、引導觀眾入座並協助長輩。",
+   "en": "Run the check-in desk, hand out programmes, guide guests to seats and help elderly attendees."
+  },
+  "skills": {
+   "zh": "親切、笑容多一點就好",
+   "en": "Friendly and welcoming"
+  },
+  "date": "2026-12-19",
+  "time": "13:15–14:15",
+  "place": {
+   "zh": "雅頌坊 入口大廳",
+   "en": "Yǎsòng Hall — Entrance Foyer"
+  },
+  "slots": 3,
+  "contact": "接待組 · 怡君"
+ },
+ {
+  "id": "n05",
+  "cat": "media",
+  "title": {
+   "zh": "演出攝影（照片）",
+   "en": "Concert Photography"
+  },
+  "desc": {
+   "zh": "拍攝彩排與演出照片，需自備相機，重點捕捉孩子們的表情。",
+   "en": "Shoot rehearsal and performance photos. Bring your own camera; focus on the kids’ expressions."
+  },
+  "skills": {
+   "zh": "自備相機、熟悉室內低光拍攝",
+   "en": "Own camera; comfortable with low-light indoor shooting"
+  },
+  "date": "2026-12-19",
+  "time": "13:30–17:30",
+  "place": {
+   "zh": "雅頌坊 觀眾席後方",
+   "en": "Yǎsòng Hall — rear of auditorium"
+  },
+  "slots": 2,
+  "contact": "記錄組 · Vincent"
+ },
+ {
+  "id": "n06",
+  "cat": "media",
+  "title": {
+   "zh": "演出錄影與簡易剪輯",
+   "en": "Video Recording & Light Editing"
+  },
+  "desc": {
+   "zh": "架設腳架全程錄影；會後協助整理成一支精華影片（可在家完成）。",
+   "en": "Set up a tripod for full recording; later help cut a highlight video (can be done from home)."
+  },
+  "skills": {
+   "zh": "自備相機或手機穩定器；會剪輯佳",
+   "en": "Own camera or gimbal; editing skills a plus"
+  },
+  "date": "2026-12-19",
+  "time": "13:30–17:30",
+  "place": {
+   "zh": "雅頌坊 觀眾席中央",
+   "en": "Yǎsòng Hall — centre of auditorium"
+  },
+  "slots": 1,
+  "contact": "記錄組 · Vincent"
+ },
+ {
+  "id": "n07",
+  "cat": "food",
+  "title": {
+   "zh": "中場茶點準備與分送",
+   "en": "Intermission Refreshments"
+  },
+  "desc": {
+   "zh": "會前擺設茶點桌、中場協助分送飲水與點心、會後收拾。",
+   "en": "Set up the refreshment table, serve drinks and snacks at intermission, clean up afterwards."
+  },
+  "skills": {
+   "zh": "不怕熱、動作俐落",
+   "en": "Energetic and quick on your feet"
+  },
+  "date": "2026-12-19",
+  "time": "14:45–15:30",
+  "place": {
+   "zh": "雅頌坊 後方迴廊",
+   "en": "Yǎsòng Hall — rear corridor"
+  },
+  "slots": 3,
+  "contact": "餐飲組 · 淑芬"
+ },
+ {
+  "id": "n08",
+  "cat": "kids",
+  "title": {
+   "zh": "小朋友休息區陪伴",
+   "en": "Kids’ Rest Area Supervision"
+  },
+  "desc": {
+   "zh": "後台休息區陪伴候場的孩子、協助帶隊上下台與上洗手間。",
+   "en": "Stay with children waiting backstage, escort them on and off stage and to the restroom."
+  },
+  "skills": {
+   "zh": "喜歡小孩、有耐心",
+   "en": "Good with children, patient"
+  },
+  "date": "2026-12-19",
+  "time": "13:00–17:00",
+  "place": {
+   "zh": "雅頌坊 後台休息室",
+   "en": "Yǎsòng Hall — backstage lounge"
+  },
+  "slots": 3,
+  "contact": "節目組 · 雅婷"
+ },
+ {
+  "id": "n09",
+  "cat": "admin",
+  "title": {
+   "zh": "節目單印製與現場發放",
+   "en": "Programme Printing & Distribution"
+  },
+  "desc": {
+   "zh": "協助校對與印製節目單（會前在家可協助）、現場補充分發。",
+   "en": "Help proofread and print the programme (can be done from home beforehand) and restock on site."
+  },
+  "skills": {
+   "zh": "細心、會基本文書處理",
+   "en": "Detail-oriented, basic document skills"
+  },
+  "date": "2026-12-18",
+  "time": "彈性（會前線上）",
+  "place": {
+   "zh": "遠端／雅頌坊",
+   "en": "Remote / Yǎsòng Hall"
+  },
+  "slots": 2,
+  "contact": "行政組 · Peggy"
+ },
+ {
+  "id": "n10",
+  "cat": "admin",
+  "title": {
+   "zh": "會後問卷與照片整理上傳",
+   "en": "Post-concert Survey & Photo Upload"
+  },
+  "desc": {
+   "zh": "演出後協助發放線上回饋問卷、整理照片並上傳到社群相簿。",
+   "en": "Send out the online feedback survey and organise photos into the community album."
+  },
+  "skills": {
+   "zh": "會用 Google 表單／雲端硬碟",
+   "en": "Comfortable with Google Forms / Drive"
+  },
+  "date": "2026-12-20",
+  "time": "彈性",
+  "place": {
+   "zh": "遠端",
+   "en": "Remote"
+  },
+  "slots": 2,
+  "contact": "行政組 · Peggy"
+ },
+ {
+  "id": "n11",
+  "cat": "setup",
+  "title": {
+   "zh": "樂器搬運與調音支援",
+   "en": "Instrument Moving & Tuning Support"
+  },
+  "desc": {
+   "zh": "協助搬運鋼琴以外的樂器、譜架與打擊樂器，協助調音師。",
+   "en": "Help move instruments, stands and percussion gear; assist the tuner."
+  },
+  "skills": {
+   "zh": "能搬重物佳",
+   "en": "Able to lift moderately heavy items"
+  },
+  "date": "2026-12-19",
+  "time": "12:00–13:00 / 16:30–17:30",
+  "place": {
+   "zh": "雅頌坊 側門",
+   "en": "Yǎsòng Hall — side entrance"
+  },
+  "slots": 2,
+  "contact": "場務組 · 小美"
+ },
+ {
+  "id": "n12",
+  "cat": "reception",
+  "title": {
+   "zh": "停車與動線引導",
+   "en": "Parking & Wayfinding"
+  },
+  "desc": {
+   "zh": "在校園周邊協助引導來賓停車與前往雅頌坊的路線。",
+   "en": "Guide guests to parking around campus and direct them to Yǎsòng Hall."
+  },
+  "skills": {
+   "zh": "熟悉台大校園佳",
+   "en": "Familiar with NTU campus a plus"
+  },
+  "date": "2026-12-19",
+  "time": "13:00–14:30",
+  "place": {
+   "zh": "台大校園周邊",
+   "en": "NTU campus surroundings"
+  },
+  "slots": 2,
+  "contact": "接待組 · 怡君"
+ }
+]
