@@ -2,12 +2,22 @@
 
 單一 HTML 檔案的志工認領看板，中／英／雙語，支援**雲端即時同步**（Google Sheet，零成本）。
 
+## 🌐 已上線
+
+**<https://hongchikuo-bot.github.io/music-showcase-volunteers/>**
+
+> ⚠️ **目前還不要分享給社群成員。**
+> 網站現在是「本機模式」——每個人在自己裝置上按認領，**只有他自己看得到**，主辦看不到。
+> 對志工認領來說這樣沒有意義（大家會各填各的）。
+> **請先完成下面的「二、啟用雲端同步」，狀態燈變成 🟢 雲端已連線之後再分享。**
+
 ```
 music_showcase_site/
 ├── index.html              ← 網站本體（唯一需要部署的檔案）
 ├── README.md               ← 這份說明
 ├── seed.json               ← 12 筆預設志工任務（給雲端初始用）
 ├── mock_server.py          ← 本機模擬後端，部署前先試用／日後回歸測試
+├── 啟動網站.command         ← 雙擊＝啟動本機伺服器＋自動開瀏覽器
 └── apps-script/
     └── Code.gs             ← Google Sheet 後端程式碼（貼到 Apps Script）
 ```
@@ -70,7 +80,10 @@ python3 mock_server.py 8899
 > ⚠️ 之後若改過程式，要 **部署 → 管理部署作業 → 編輯 → 版本選「新版本」→ 部署**，網址才會更新。
 
 ### 4. 把網址填進網站
-打開 `index.html`，找到最上面的設定區：
+
+**如果你是在 GitHub 上改**：開 <https://github.com/hongchikuo-bot/music-showcase-volunteers/blob/main/index.html> → 右上角鉛筆 ✏️ → 找到 `API_URL` 那行 → 貼上網址 → Commit changes。等 1 分鐘 Pages 重新建置就生效。
+
+**如果你在本機改**：打開 `index.html`，找到最上面的設定區：
 
 ```js
 const CONFIG = {
@@ -79,7 +92,7 @@ const CONFIG = {
 };
 ```
 
-貼好存檔，重新整理網站 — 頁首應該變成 🟢 **雲端已連線**。
+改完存檔，重新整理網站 — 頁首應該變成 🟢 **雲端已連線**。
 
 ### 5. 把 12 筆預設任務寫進 Sheet
 1. 點「⚙ 管理」（密碼 `showcase`）
