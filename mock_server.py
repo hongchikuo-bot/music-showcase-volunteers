@@ -88,8 +88,8 @@ def act_claim(body):
     p = body.get("person") or {}
     name = str(p.get("name", "")).strip()
     contact = str(p.get("contact", "")).strip()
-    if not name or not contact:
-        return {"ok": False, "error": "missing name/contact"}
+    if not name:
+        return {"ok": False, "error": "missing name"}
 
     n = find(DB, body.get("id"))
     if n is None:

@@ -193,7 +193,7 @@ function handleClaim_(sh, body) {
   var p = body.person || {};
   var name = str_(p.name).trim();
   var contact = str_(p.contact).trim();
-  if (!name || !contact) return { ok: false, error: 'missing name/contact' };
+  if (!name) return { ok: false, error: 'missing name' };
 
   var row = findRow_(sh, body.id);
   if (row === -1) return { ok: false, error: 'task not found' };

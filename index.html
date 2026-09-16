@@ -447,7 +447,7 @@ footer a{color:var(--gold-light)}
         <div class="err" id="eName">請填寫名字</div>
       </div>
       <div class="field" id="fContact">
-        <label id="lContact">聯絡方式 <span class="opt">(必填，Line / 手機 / Email)</span></label>
+        <label id="lContact">聯絡方式 <span class="opt">(選填)</span></label>
         <input id="cContact" placeholder="例：Line: kevin 或 0912-345-678">
         <div class="err" id="eContact">請留一種聯絡方式，方便主辦聯繫</div>
       </div>
@@ -459,6 +459,7 @@ footer a{color:var(--gold-light)}
         <label id="lNote">備註 <span class="opt">(選填)</span></label>
         <textarea id="cNote" placeholder="例：可以開車載器材 / 有音響經驗"></textarea>
       </div>
+      <div class="note" id="multiClaimNote">💡 可以同時認領多項工作，時間允許歡迎多多認領。</div>
       <div class="note" id="privacyNote">🔒 你填的聯絡資訊只會保存在你自己的瀏覽器與主辦端，不會公開顯示在網站上。</div>
     </div>
     <div class="modal-foot">
@@ -644,6 +645,7 @@ const T = {
     eName:'請填寫名字', eContact:'請留一種聯絡方式，方便主辦聯繫',
     cCancel:'取消', cSubmit:'確認認領',
     privacy:'🔒 你填的聯絡資訊只會保存在你自己的瀏覽器與主辦端，不會公開顯示在網站上。',
+    multiClaim:'💡 可以同時認領多項工作，時間允許歡迎多多認領。',
     adminTitle:'管理員：新增志工需求',
     adminSub:'僅主辦／核心志工使用。新增的資料會存在這台裝置的瀏覽器中。',
     lblTitle:'任務名稱（中文）', lblTitleEn:'Task name (English)', lblCat:'分類',
@@ -709,6 +711,7 @@ const T = {
     eName:'Please enter your name', eContact:'Please leave a contact so we can reach you',
     cCancel:'Cancel', cSubmit:'Confirm',
     privacy:'🔒 Your contact details are only stored in your own browser and with the organiser — never shown publicly on this site.',
+    multiClaim:'💡 You can claim more than one task if your schedule allows.',
     adminTitle:'Admin: add a volunteer task',
     adminSub:'For the organiser / core volunteers. New tasks are saved in this device\u2019s browser.',
     lblTitle:'Task name (Chinese)', lblTitleEn:'Task name (English)', lblCat:'Category',
@@ -908,8 +911,9 @@ function applyStatic(){
   set('cCancel', t('cCancel'));
   set('cSubmit', t('cSubmit'));
   setH('privacyNote', tbi('privacy'));
+  setH('multiClaimNote', tbi('multiClaim'));
   document.getElementById('lName').innerHTML = esc(t('lName')) + ' <span class="opt">' + esc(t('req')) + '</span>';
-  document.getElementById('lContact').innerHTML = esc(t('lContact')) + ' <span class="opt">' + esc(t('req')) + '</span>';
+  document.getElementById('lContact').innerHTML = esc(t('lContact')) + ' <span class="opt">' + esc(t('opt')) + '</span>';
   document.getElementById('lAvail').innerHTML = esc(t('lAvail')) + ' <span class="opt">' + esc(t('opt')) + '</span>';
   document.getElementById('lNote').innerHTML = esc(t('lNote')) + ' <span class="opt">' + esc(t('opt')) + '</span>';
 }
@@ -1082,8 +1086,7 @@ function submitClaim(){
   const avail = document.getElementById('cAvail').value.trim();
   const note = document.getElementById('cNote').value.trim();
   document.getElementById('fName').classList.toggle('bad', !name);
-  document.getElementById('fContact').classList.toggle('bad', !contact);
-  if(!name || !contact) return;
+  if(!name) return;
   if(isFull(n)){ toast(t('statusFull')); closeClaim(); render(); return; }
 
   /* --- 雲端模式：送到 Google Sheet --- */
