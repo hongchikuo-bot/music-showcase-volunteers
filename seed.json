@@ -14,7 +14,7 @@
       "zh": "無經驗可，現場會分組帶",
       "en": "No experience needed, grouped on site"
     },
-    "date": "2027-01-06",
+    "date": "2027-01-03",
     "time": "11:00–13:00 / 17:00–18:30",
     "place": {
       "zh": "生技園區 全區",
@@ -38,7 +38,7 @@
       "zh": "有基本音響概念佳（會有人帶）",
       "en": "Basic audio knowledge a plus (training provided)"
     },
-    "date": "2027-01-06",
+    "date": "2027-01-03",
     "time": "12:30–17:30",
     "place": {
       "zh": "生技園區 舞台區",
@@ -62,7 +62,7 @@
       "zh": "細心、能聽指令",
       "en": "Careful, good at following cues"
     },
-    "date": "2027-01-06",
+    "date": "2027-01-03",
     "time": "13:00–17:00",
     "place": {
       "zh": "生技園區 舞台區",
@@ -86,7 +86,7 @@
       "zh": "親切、笑容多一點就好",
       "en": "Friendly and welcoming"
     },
-    "date": "2027-01-06",
+    "date": "2027-01-03",
     "time": "13:15–14:15",
     "place": {
       "zh": "生技園區 入口大廳",
@@ -110,7 +110,7 @@
       "zh": "自備相機、熟悉室內低光拍攝",
       "en": "Own camera; comfortable with low-light indoor shooting"
     },
-    "date": "2027-01-06",
+    "date": "2027-01-03",
     "time": "13:30–17:30",
     "place": {
       "zh": "生技園區 觀眾席後方",
@@ -134,61 +134,13 @@
       "zh": "自備相機或手機穩定器；會剪輯佳",
       "en": "Own camera or gimbal; editing skills a plus"
     },
-    "date": "2027-01-06",
+    "date": "2027-01-03",
     "time": "13:30–17:30",
     "place": {
       "zh": "生技園區 觀眾席中央",
       "en": "Taipei Bio Park — centre of auditorium"
     },
     "slots": 1,
-    "contact": ""
-  },
-  {
-    "id": "n07",
-    "cat": "food",
-    "title": {
-      "zh": "中場茶點準備與分送",
-      "en": "Intermission Refreshments"
-    },
-    "desc": {
-      "zh": "會前擺設茶點桌、中場協助分送飲水與點心、會後收拾。",
-      "en": "Set up the refreshment table, serve drinks and snacks at intermission, clean up afterwards."
-    },
-    "skills": {
-      "zh": "不怕熱、動作俐落",
-      "en": "Energetic and quick on your feet"
-    },
-    "date": "2027-01-06",
-    "time": "14:45–15:30",
-    "place": {
-      "zh": "生技園區 後方迴廊",
-      "en": "Taipei Bio Park — rear corridor"
-    },
-    "slots": 3,
-    "contact": ""
-  },
-  {
-    "id": "n08",
-    "cat": "kids",
-    "title": {
-      "zh": "小朋友休息區陪伴",
-      "en": "Kids’ Rest Area Supervision"
-    },
-    "desc": {
-      "zh": "後台休息區陪伴候場的孩子、協助帶隊上下台與上洗手間。",
-      "en": "Stay with children waiting backstage, escort them on and off stage and to the restroom."
-    },
-    "skills": {
-      "zh": "喜歡小孩、有耐心",
-      "en": "Good with children, patient"
-    },
-    "date": "2027-01-06",
-    "time": "13:00–17:00",
-    "place": {
-      "zh": "生技園區 後台休息室",
-      "en": "Taipei Bio Park — backstage lounge"
-    },
-    "slots": 3,
     "contact": ""
   },
   {
@@ -206,7 +158,7 @@
       "zh": "細心、會基本文書處理",
       "en": "Detail-oriented, basic document skills"
     },
-    "date": "2027-01-05",
+    "date": "2027-01-02",
     "time": "彈性（會前線上）",
     "place": {
       "zh": "遠端／生技園區",
@@ -230,7 +182,7 @@
       "zh": "會用 Google 表單／雲端硬碟",
       "en": "Comfortable with Google Forms / Drive"
     },
-    "date": "2027-01-07",
+    "date": "2027-01-04",
     "time": "彈性",
     "place": {
       "zh": "遠端",
@@ -254,7 +206,7 @@
       "zh": "能搬重物佳",
       "en": "Able to lift moderately heavy items"
     },
-    "date": "2027-01-06",
+    "date": "2027-01-03",
     "time": "12:00–13:00 / 16:30–17:30",
     "place": {
       "zh": "生技園區 側門",
@@ -278,11 +230,83 @@
       "zh": "熟悉南港周邊佳",
       "en": "Familiar with the Nangang area a plus"
     },
-    "date": "2027-01-06",
+    "date": "2027-01-03",
     "time": "13:00–14:30",
     "place": {
       "zh": "生技園區周邊",
       "en": "Taipei Bio Park surroundings"
+    },
+    "slots": 2,
+    "contact": ""
+  },
+  {
+    "id": "n13",
+    "cat": "design",
+    "title": {
+      "zh": "海報設計",
+      "en": "Poster Design"
+    },
+    "desc": {
+      "zh": "設計音樂會宣傳海報與視覺素材。",
+      "en": "Design the concert poster and visual materials."
+    },
+    "skills": {
+      "zh": "會設計軟體（如 Canva / Illustrator）",
+      "en": "Familiar with design tools (Canva / Illustrator)"
+    },
+    "date": "2027-01-02",
+    "time": "彈性（會前線上）",
+    "place": {
+      "zh": "遠端",
+      "en": "Remote"
+    },
+    "slots": 1,
+    "contact": ""
+  },
+  {
+    "id": "n14",
+    "cat": "design",
+    "title": {
+      "zh": "節目單設計",
+      "en": "Programme Design"
+    },
+    "desc": {
+      "zh": "設計節目單版面與排版。",
+      "en": "Design the programme layout and typesetting."
+    },
+    "skills": {
+      "zh": "會排版軟體（Canva / Word / InDesign）",
+      "en": "Familiar with layout tools (Canva / Word / InDesign)"
+    },
+    "date": "2027-01-02",
+    "time": "彈性（會前線上）",
+    "place": {
+      "zh": "遠端",
+      "en": "Remote"
+    },
+    "slots": 1,
+    "contact": ""
+  },
+  {
+    "id": "n15",
+    "cat": "design",
+    "title": {
+      "zh": "節目曲目收集",
+      "en": "Repertoire Collection"
+    },
+    "desc": {
+      "zh": "聯絡各家庭收集演出曲目，整理成節目表。",
+      "en": "Collect performance pieces from each family and compile the programme."
+    },
+    "skills": {
+      "zh": "細心、善於溝通",
+      "en": "Detail-oriented, good at communicating"
+    },
+    "date": "2027-01-02",
+    "time": "彈性（會前線上）",
+    "place": {
+      "zh": "遠端",
+      "en": "Remote"
     },
     "slots": 2,
     "contact": ""
