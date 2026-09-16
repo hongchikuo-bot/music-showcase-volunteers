@@ -940,27 +940,24 @@ function updateAdminLabels(){
 }
 
 /* ---------- render ---------- */
-function chipOpenLabel(n){ return (lang === 'en') ? fmt(T.en.statusOpen, {n:n}) : fmt(T.zh.statusOpen, {n:n}); }
+function chipTaskLabel(n){
+  if(lang === 'en') return n + ' task' + (n === 1 ? '' : 's');
+  return n + ' 個任務';
+}
 
 function renderChips(){
   const box = document.getElementById('chips');
-  const taskCounts = {};
-  const openCounts = {};
-  CATS.forEach(c => { taskCounts[c.id] = 0; openCounts[c.id] = 0; });
-  needs.forEach(n => {
-    if(taskCounts[n.cat] === undefined) return;
-    taskCounts[n.cat]++;
-    openCounts[n.cat] += slotsLeft(n);
-  });
-  const totalOpen = needs.reduce((a,n) => a + slotsLeft(n), 0);
+  const counts = {};
+  CATS.forEach(c => counts[c.id] = 0);
+  needs.forEach(n => { if(counts[n.cat] !== undefined) counts[n.cat]++; });
   let html = `<button class="chip ${filterCat==='all'?'on':''}" data-cat="all">` +
-    `${esc(t('allCat'))} (${esc(chipOpenLabel(totalOpen))})</button>`;
+    `${esc(t('allCat'))} (${esc(chipTaskLabel(needs.length))})</button>`;
   CATS.forEach(c => {
-    if(!taskCounts[c.id]) return;
+    if(!counts[c.id]) return;
     const label = (lang === 'en') ? c.en : c.zh;
     const label2 = (lang === 'both') ? ' ' + c.en : '';
     html += `<button class="chip ${filterCat===c.id?'on':''}" data-cat="${c.id}">` +
-      `${c.icon} ${esc(label)}${esc(label2)} (${esc(chipOpenLabel(openCounts[c.id]))})</button>`;
+      `${c.icon} ${esc(label)}${esc(label2)} (${esc(chipTaskLabel(counts[c.id]))})</button>`;
   });
   box.innerHTML = html;
   [...box.querySelectorAll('.chip')].forEach(b => {
