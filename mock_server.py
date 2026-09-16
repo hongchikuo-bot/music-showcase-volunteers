@@ -21,6 +21,7 @@ Local mock of the Apps Script backend, byte-for-byte the same JSON contract.
 
 import json
 import os
+import re
 import sys
 import threading
 import time
@@ -265,7 +266,7 @@ class Handler(BaseHTTPRequestHandler):
         with open(p, encoding="utf-8") as f:
             html = f.read()
         if inject_api:
-            html = html.replace("API_URL: ''", "API_URL: '/api'")
+            html = re.sub(r"API_URL:\s*'[^']*'", "API_URL: '/api'", html)
             if "API_URL: '/api'" not in html:
                 return self._send(500, "could not inject API_URL", "text/plain; charset=utf-8")
         return self._send(200, html, ctype)
