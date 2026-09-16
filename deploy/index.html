@@ -940,19 +940,27 @@ function updateAdminLabels(){
 }
 
 /* ---------- render ---------- */
+function chipOpenLabel(n){ return (lang === 'en') ? fmt(T.en.statusOpen, {n:n}) : fmt(T.zh.statusOpen, {n:n}); }
+
 function renderChips(){
   const box = document.getElementById('chips');
-  const counts = {};
-  CATS.forEach(c => counts[c.id] = 0);
-  needs.forEach(n => { if(counts[n.cat] !== undefined) counts[n.cat]++; });
+  const taskCounts = {};
+  const openCounts = {};
+  CATS.forEach(c => { taskCounts[c.id] = 0; openCounts[c.id] = 0; });
+  needs.forEach(n => {
+    if(taskCounts[n.cat] === undefined) return;
+    taskCounts[n.cat]++;
+    openCounts[n.cat] += slotsLeft(n);
+  });
+  const totalOpen = needs.reduce((a,n) => a + slotsLeft(n), 0);
   let html = `<button class="chip ${filterCat==='all'?'on':''}" data-cat="all">` +
-    `${esc(t('allCat'))} (${needs.length})</button>`;
+    `${esc(t('allCat'))} (${esc(chipOpenLabel(totalOpen))})</button>`;
   CATS.forEach(c => {
-    if(!counts[c.id]) return;
+    if(!taskCounts[c.id]) return;
     const label = (lang === 'en') ? c.en : c.zh;
     const label2 = (lang === 'both') ? ' ' + c.en : '';
     html += `<button class="chip ${filterCat===c.id?'on':''}" data-cat="${c.id}">` +
-      `${c.icon} ${esc(label)}${esc(label2)} (${counts[c.id]})</button>`;
+      `${c.icon} ${esc(label)}${esc(label2)} (${esc(chipOpenLabel(openCounts[c.id]))})</button>`;
   });
   box.innerHTML = html;
   [...box.querySelectorAll('.chip')].forEach(b => {
