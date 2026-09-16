@@ -21,7 +21,7 @@
       "en": "Taipei Bio Park — whole venue"
     },
     "slots": 4,
-    "contact": "場務組 · 小美"
+    "contact": ""
   },
   {
     "id": "n02",
@@ -45,7 +45,7 @@
       "en": "Taipei Bio Park — Stage"
     },
     "slots": 2,
-    "contact": "音響組 · 阿凱"
+    "contact": ""
   },
   {
     "id": "n03",
@@ -69,7 +69,7 @@
       "en": "Taipei Bio Park — Stage"
     },
     "slots": 2,
-    "contact": "舞台組 · 阿德"
+    "contact": ""
   },
   {
     "id": "n04",
@@ -93,7 +93,7 @@
       "en": "Taipei Bio Park — Entrance Foyer"
     },
     "slots": 3,
-    "contact": "接待組 · 怡君"
+    "contact": ""
   },
   {
     "id": "n05",
@@ -117,7 +117,7 @@
       "en": "Taipei Bio Park — rear of auditorium"
     },
     "slots": 2,
-    "contact": "記錄組 · Vincent"
+    "contact": ""
   },
   {
     "id": "n06",
@@ -141,7 +141,7 @@
       "en": "Taipei Bio Park — centre of auditorium"
     },
     "slots": 1,
-    "contact": "記錄組 · Vincent"
+    "contact": ""
   },
   {
     "id": "n07",
@@ -165,7 +165,7 @@
       "en": "Taipei Bio Park — rear corridor"
     },
     "slots": 3,
-    "contact": "餐飲組 · 淑芬"
+    "contact": ""
   },
   {
     "id": "n08",
@@ -189,7 +189,7 @@
       "en": "Taipei Bio Park — backstage lounge"
     },
     "slots": 3,
-    "contact": "節目組 · 雅婷"
+    "contact": ""
   },
   {
     "id": "n09",
@@ -213,7 +213,7 @@
       "en": "Remote / Taipei Bio Park"
     },
     "slots": 2,
-    "contact": "行政組 · Peggy"
+    "contact": ""
   },
   {
     "id": "n10",
@@ -237,7 +237,7 @@
       "en": "Remote"
     },
     "slots": 2,
-    "contact": "行政組 · Peggy"
+    "contact": ""
   },
   {
     "id": "n11",
@@ -261,7 +261,7 @@
       "en": "Taipei Bio Park — side entrance"
     },
     "slots": 2,
-    "contact": "場務組 · 小美"
+    "contact": ""
   },
   {
     "id": "n12",
@@ -285,6 +285,6 @@
       "en": "Taipei Bio Park surroundings"
     },
     "slots": 2,
-    "contact": "接待組 · 怡君"
+    "contact": ""
   }
 ]
