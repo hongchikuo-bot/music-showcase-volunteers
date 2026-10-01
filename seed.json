@@ -17,8 +17,8 @@
     "date": "2027-01-03",
     "time": "11:00–13:00 / 17:00–18:30",
     "place": {
-      "zh": "生技園區 全區",
-      "en": "Taipei Bio Park — whole venue"
+      "zh": "南港生技園區 全區",
+      "en": "Nangang Biotech Park — whole venue"
     },
     "slots": 4,
     "contact": ""
@@ -41,8 +41,8 @@
     "date": "2027-01-03",
     "time": "12:30–17:30",
     "place": {
-      "zh": "生技園區 舞台區",
-      "en": "Taipei Bio Park — Stage"
+      "zh": "南港生技園區 舞台區",
+      "en": "Nangang Biotech Park — Stage"
     },
     "slots": 2,
     "contact": ""
@@ -65,8 +65,8 @@
     "date": "2027-01-03",
     "time": "13:00–17:00",
     "place": {
-      "zh": "生技園區 舞台區",
-      "en": "Taipei Bio Park — Stage"
+      "zh": "南港生技園區 舞台區",
+      "en": "Nangang Biotech Park — Stage"
     },
     "slots": 2,
     "contact": ""
@@ -89,8 +89,8 @@
     "date": "2027-01-03",
     "time": "13:15–14:15",
     "place": {
-      "zh": "生技園區 入口大廳",
-      "en": "Taipei Bio Park — Entrance Foyer"
+      "zh": "南港生技園區 入口大廳",
+      "en": "Nangang Biotech Park — Entrance Foyer"
     },
     "slots": 3,
     "contact": ""
@@ -113,8 +113,8 @@
     "date": "2027-01-03",
     "time": "13:30–17:30",
     "place": {
-      "zh": "生技園區 觀眾席後方",
-      "en": "Taipei Bio Park — rear of auditorium"
+      "zh": "南港生技園區 觀眾席後方",
+      "en": "Nangang Biotech Park — rear of auditorium"
     },
     "slots": 2,
     "contact": ""
@@ -137,8 +137,8 @@
     "date": "2027-01-03",
     "time": "13:30–17:30",
     "place": {
-      "zh": "生技園區 觀眾席中央",
-      "en": "Taipei Bio Park — centre of auditorium"
+      "zh": "南港生技園區 觀眾席中央",
+      "en": "Nangang Biotech Park — centre of auditorium"
     },
     "slots": 1,
     "contact": ""
@@ -161,8 +161,8 @@
     "date": "2027-01-02",
     "time": "彈性（會前線上）",
     "place": {
-      "zh": "遠端／生技園區",
-      "en": "Remote / Taipei Bio Park"
+      "zh": "遠端／南港生技園區",
+      "en": "Remote / Nangang Biotech Park"
     },
     "slots": 2,
     "contact": ""
@@ -209,8 +209,8 @@
     "date": "2027-01-03",
     "time": "12:00–13:00 / 16:30–17:30",
     "place": {
-      "zh": "生技園區 側門",
-      "en": "Taipei Bio Park — side entrance"
+      "zh": "南港生技園區 側門",
+      "en": "Nangang Biotech Park — side entrance"
     },
     "slots": 2,
     "contact": ""
@@ -233,8 +233,8 @@
     "date": "2027-01-03",
     "time": "13:00–14:30",
     "place": {
-      "zh": "生技園區周邊",
-      "en": "Taipei Bio Park surroundings"
+      "zh": "南港生技園區周邊",
+      "en": "Nangang Biotech Park surroundings"
     },
     "slots": 2,
     "contact": ""
